@@ -16,5 +16,8 @@ app.set('views', __dirname + '/views')
 app.get '/', model.index
 app.post '/login', model.login
 app.post '/register', model.register
+app.post '/publish', model.publish
+app.post '/listMyArticle', model.listMyArticle
+app.post '/listAllArticle', model.listAllArticle
 
 app.listen(80)

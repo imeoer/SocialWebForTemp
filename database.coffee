@@ -10,4 +10,9 @@ class Nedb
 			autoload: true
 		})
 
+		that.article = new Datastore({
+			filename: './db/article.db',
+			autoload: true
+		})
+
 module.exports = new Nedb()

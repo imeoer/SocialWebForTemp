@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	// login
+
 	var loginroll = $('.login_cont ul');
 	$('.handover').click(function(){
 		loginroll.animate({marginLeft:'-=935px'},800,function(){

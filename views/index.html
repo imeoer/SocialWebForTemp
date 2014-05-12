@@ -1,13 +1,461 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>SampleWebApp</title>
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	</head>
-	<body>
-		<div id="container">{{user_name}}</div>
-	</body>
-	<script type="text/javascript" src="js/zepto.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="css/basic.css" />
+<link type="text/css" rel="stylesheet" href="css/tiny.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/tiny.js"></script>
+<title>index</title>
+</head>
+<body>
+	<div class="publish">
+		<ul>
+			<li>
+				<form>
+					<div class="cont_box">
+						<div class="title">
+							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+						</div>
+						<div class="tools">
+							<img src="images/edit_tools.jpg" />
+						</div>
+						<div class="cont">
+							<textarea>Article</textarea>
+						</div>
+						<div class="tags">
+							<em></em>
+							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+						</div>
+					</div>
+					<div class="btns">
+						<span class="btn cancel">Cancel</span>
+						<input class="submit" type="submit" value="Done" />
+					</div>
+				</form>
+			</li>
+			<li>
+				<form class="hide">
+					<div class="cont_box">
+						<div class="title">
+							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+						</div>
+						<div class="tools">
+							<img src="images/edit_tools.jpg" />
+						</div>
+						<div class="cont">
+							<textarea>Image</textarea>
+						</div>
+						<div class="tags">
+							<em></em>
+							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+						</div>
+					</div>
+					<div class="btns">
+						<span class="btn cancel">Cancel</span>
+						<input class="submit" type="submit" value="Done" />
+					</div>
+				</form>
+			</li>
+			<li>
+				<form class="hide">
+					<div class="cont_box">
+						<div class="title">
+							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+						</div>
+						<div class="tools">
+							<img src="images/edit_tools.jpg" />
+						</div>
+						<div class="cont">
+							<textarea>Audio</textarea>
+						</div>
+						<div class="tags">
+							<em></em>
+							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+						</div>
+					</div>
+					<div class="btns">
+						<span class="btn cancel">Cancel</span>
+						<input class="submit" type="submit" value="Done" />
+					</div>
+				</form>
+			</li>
+			<li>
+				<form class="hide">
+					<div class="cont_box">
+						<div class="title">
+							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+						</div>
+						<div class="tools">
+							<img src="images/edit_tools.jpg" />
+						</div>
+						<div class="cont">
+							<textarea>Video</textarea>
+						</div>
+						<div class="tags">
+							<em></em>
+							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+						</div>
+					</div>
+					<div class="btns">
+						<span class="btn cancel">Cancel</span>
+						<input class="submit" type="submit" value="Done" />
+					</div>
+				</form>
+			</li>
+			<li>
+				<form class="hide">
+					<div class="cont_box">
+						<div class="title">
+							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+						</div>
+						<div class="tools">
+							<img src="images/edit_tools.jpg" />
+						</div>
+						<div class="cont">
+							<textarea>Link</textarea>
+						</div>
+						<div class="tags">
+							<em></em>
+							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+						</div>
+					</div>
+					<div class="btns">
+						<span class="btn cancel">Cancel</span>
+						<input class="submit" type="submit" value="Done" />
+					</div>
+				</form>
+			</li>
+		</ul>
+	</div>
+	<div class="article">
+		<ul>
+			<li>
+				<a class="avatar" href="#"><img src="images/other1.jpg"></a>
+				<div class="cont_box">
+					<div class="title">
+						<div class="more"><a href="#">╳</a></div>
+						<h3><a href="#">《人生是一场独自的修行》</a></h3>
+						<div class="clear"></div>
+					</div>
+					<div class="cont">
+						<img src="images/img21.jpg" />
+						<p>不要轻言你是在为谁付出和牺牲，其实所有的付出和牺牲最终的受益人都是自己。人生是一场与任何人无关的独自的修行，这是一条悲欣交集的道路，路的尽头一定有礼物，就看你配不配得到。</p>
+					</div>
+					<div class="comment_box">
+						<div class="tags">
+							<a href="#">人生</a>
+							<a href="#">哲理</a>
+							<a href="#">路</a>
+						</div>
+						<div class="share">
+							<a href="#" class="love_btn"></a>
+							<a href="#" class="comt_btn"></a>
+							<a href="#" class="share_btn"></a>
+						</div>
+						<div class="clear space_10"></div>
+						<dl class="hide">
+							<dt>
+								<img src="images/avatar.jpg" />
+								<span>其实所有的付出和牺牲最终的受益人都是自己</span>
+							</dt>
+							<dd>
+								<form>
+									<textarea></textarea>
+									<input class="submit" type="submit" value="评论" />
+								</form>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</li>
+			<li>
+				<a class="avatar" href="#"><img src="images/other2.jpg"></a>
+				<div class="cont_box">
+					<div class="title">
+						<div class="more"><a href="#">╳</a></div>
+						<h3><a href="#">《人生是一场独自的修行》</a></h3>
+						<div class="clear"></div>
+					</div>
+					<div class="cont">
+						<img src="images/img22.jpg" />
+						<p>不要轻言你是在为谁付出和牺牲，其实所有的付出和牺牲最终的受益人都是自己。人生是一场与任何人无关的独自的修行，这是一条悲欣交集的道路，路的尽头一定有礼物，就看你配不配得到。</p>
+					</div>
+					<div class="comment_box">
+						<div class="tags">
+							<a href="#">人生</a>
+							<a href="#">哲理</a>
+							<a href="#">路</a>
+						</div>
+						<div class="share">
+							<a href="#" class="love_btn"></a>
+							<a href="#" class="comt_btn"></a>
+							<a href="#" class="share_btn"></a>
+						</div>
+						<div class="clear space_10"></div>
+						<dl class="hide">
+							<dt>
+								<img src="images/avatar.jpg" />
+								<span>其实所有的付出和牺牲最终的受益人都是自己</span>
+							</dt>
+							<dd>
+								<form>
+									<textarea></textarea>
+									<input class="submit" type="submit" value="评论" />
+								</form>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="nav">
+		<div class="avatar">
+			<a href="#"><img src="images/avatar.jpg" /></a>
+		</div>
+		<h2><a href="#">Tiny</a></h2>
+		<ul>
+			<li class="ico_home"><a class="active">
+				<em></em>
+				<span>Home</span>
+			</a></li>
+			<li class="ico_article"><a>
+				<em></em>
+				<span>Article</span>
+			</a></li>
+			<li class="ico_image"><a>
+				<em></em>
+				<span>Image</span>
+			</a></li>
+			<li class="ico_audio"><a>
+				<em></em>
+				<span>Audio</span>
+			</a></li>
+			<li class="ico_video"><a>
+				<em></em>
+				<span>Video</span>
+			</a></li>
+			<li class="ico_link"><a>
+				<em></em>
+				<span>Link</span>
+			</a></li>
+		</ul>
+		<dl>
+			<dd class="ico_msg"><a href="#"></a></dd>
+			<dd class="ico_set"><a href="#"></a></dd>
+			<dd class="ico_exit"><a href="#"></a></dd>
+		</dl>
+		<div class="space_10"></div>
+	</div>
+	<div class="index_cont">
+		<ul>
+			<li><a href="#">
+				<em>自然</em>
+				<h3>这个是标题<br/>《自然》</h3>
+				<img src="images/img1.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>室内设计</em>
+				<h3>这个是标题<br/>《室内设计》</h3>
+				<img src="images/img2.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>艺术</em>
+				<h3>这个是标题<br/>《艺术》</h3>
+				<img src="images/img3.png" />
+			</a></li>
+			<li><a href="#">
+				<em>风景</em>
+				<h3>这个是标题<br/>《风景》</h3>
+				<img src="images/img4.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>涂鸦</em>
+				<h3>这个是标题<br/>《涂鸦》</h3>
+				<img src="images/img5.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>音乐</em>
+				<h3>这个是标题<br/>《音乐》</h3>
+				<img src="images/img6.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>绘画</em>
+				<h3>这个是标题<br/>《绘画》</h3>
+				<img src="images/img7.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>浪漫</em>
+				<h3>这个是标题<br/>《浪漫》</h3>
+				<img src="images/img8.gif" />
+			</a></li>
+			<li><a href="#">
+				<em>旅游</em>
+				<h3>这个是标题<br/>《旅游》</h3>
+				<img src="images/img9.gif" />
+			</a></li>
+			<li><a href="#">
+				<em>小清新</em>
+				<h3>这个是标题<br/>《小清新》</h3>
+				<img src="images/img10.gif" />
+			</a></li>
+			<li><a href="#">
+				<em>电影</em>
+				<h3>这个是标题<br/>《电影》</h3>
+				<img src="images/img11.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>蝙蝠侠</em>
+				<h3>这个是标题<br/>《蝙蝠侠》</h3>
+				<img src="images/img12.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>赫本</em>
+				<h3>这个是标题<br/>《赫本》</h3>
+				<img src="images/img13.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>手工</em>
+				<h3>这个是标题<br/>《手工》</h3>
+				<img src="images/img14.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>中国风</em>
+				<h3>这个是标题<br/>《中国风》</h3>
+				<img src="images/img15.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>街头艺术</em>
+				<h3>这个是标题<br/>《街头艺术》</h3>
+				<img src="images/img16.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>女人</em>
+				<h3>这个是标题<br/>《女人》</h3>
+				<img src="images/img17.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>普罗旺斯</em>
+				<h3>这个是标题<br/>《普罗旺斯》</h3>
+				<img src="images/img18.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>拿破仑</em>
+				<h3>这个是标题<br/>《拿破仑》</h3>
+				<img src="images/img19.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>印度</em>
+				<h3>这个是标题<br/>《印度》</h3>
+				<img src="images/img20.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>自然</em>
+				<h3>这个是标题<br/>《自然》</h3>
+				<img src="images/img1.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>室内设计</em>
+				<h3>这个是标题<br/>《室内设计》</h3>
+				<img src="images/img2.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>艺术</em>
+				<h3>这个是标题<br/>《艺术》</h3>
+				<img src="images/img3.png" />
+			</a></li>
+			<li><a href="#">
+				<em>风景</em>
+				<h3>这个是标题<br/>《风景》</h3>
+				<img src="images/img4.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>涂鸦</em>
+				<h3>这个是标题<br/>《涂鸦》</h3>
+				<img src="images/img5.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>音乐</em>
+				<h3>这个是标题<br/>《音乐》</h3>
+				<img src="images/img6.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>绘画</em>
+				<h3>这个是标题<br/>《绘画》</h3>
+				<img src="images/img7.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>浪漫</em>
+				<h3>这个是标题<br/>《浪漫》</h3>
+				<img src="images/img8.gif" />
+			</a></li>
+			<li><a href="#">
+				<em>旅游</em>
+				<h3>这个是标题<br/>《旅游》</h3>
+				<img src="images/img9.gif" />
+			</a></li>
+			<li><a href="#">
+				<em>小清新</em>
+				<h3>这个是标题<br/>《小清新》</h3>
+				<img src="images/img10.gif" />
+			</a></li>
+			<li><a href="#">
+				<em>电影</em>
+				<h3>这个是标题<br/>《电影》</h3>
+				<img src="images/img11.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>蝙蝠侠</em>
+				<h3>这个是标题<br/>《蝙蝠侠》</h3>
+				<img src="images/img12.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>赫本</em>
+				<h3>这个是标题<br/>《赫本》</h3>
+				<img src="images/img13.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>手工</em>
+				<h3>这个是标题<br/>《手工》</h3>
+				<img src="images/img14.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>中国风</em>
+				<h3>这个是标题<br/>《中国风》</h3>
+				<img src="images/img15.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>街头艺术</em>
+				<h3>这个是标题<br/>《街头艺术》</h3>
+				<img src="images/img16.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>女人</em>
+				<h3>这个是标题<br/>《女人》</h3>
+				<img src="images/img17.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>普罗旺斯</em>
+				<h3>这个是标题<br/>《普罗旺斯》</h3>
+				<img src="images/img18.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>拿破仑</em>
+				<h3>这个是标题<br/>《拿破仑》</h3>
+				<img src="images/img19.jpg" />
+			</a></li>
+			<li><a href="#">
+				<em>印度</em>
+				<h3>这个是标题<br/>《印度》</h3>
+				<img src="images/img20.jpg" />
+			</a></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</body>
 </html>
+
+

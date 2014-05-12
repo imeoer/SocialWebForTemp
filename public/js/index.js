@@ -1,3 +1,0 @@
-$(function() {
-	// your js code
-});

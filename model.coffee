@@ -156,4 +156,8 @@ class Model
 		userName = req.session.user_name || '匿名用户'
 		res.render('index', {user_name: userName})
 
+	login: (req, res) ->
+
+		res.render('login', {})
+
 module.exports = new Model()

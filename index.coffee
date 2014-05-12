@@ -14,6 +14,8 @@ app.set('view engine', 'html')
 app.set('views', __dirname + '/views')
 
 app.get '/', model.index
+app.get '/login', model.login
+
 app.post '/login', model.login
 app.post '/register', model.register
 app.post '/publish', model.publish

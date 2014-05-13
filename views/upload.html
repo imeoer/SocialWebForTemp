@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>上传例子</title>
+    <link href="/css/uploadfile.css" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.uploadfile.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(function() {
+            $('#upload').uploadFile({
+                url: '/publish',
+                fileName: 'file',
+                dynamicFormData: function() {
+                    return {
+                        article_type: 'image',
+                        article_title: '',
+                        article_content: '',
+                        article_tags: ''
+                    };        
+                }
+            });
+        });
+    </script>
+    <div id="upload">上传图片</div>
+</body>
+</html>

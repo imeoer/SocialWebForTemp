@@ -6,6 +6,19 @@ class Model
 
 		that = @
 
+	index: (req, res) ->
+
+		userName = req.session.user_name || '匿名用户'
+		res.render('index', {user_name: userName})
+
+	login: (req, res) ->
+
+		res.render('login', {})
+
+	upload: (req, res) ->
+
+		res.render('upload', {})
+
 	login: (req, res) ->
 
 		userName = req.body.user_name
@@ -66,9 +79,32 @@ class Model
 
 	publish: (req, res) ->
 
-		userName = req.session.user_name
+		userName = 'xx' #req.session.user_name
 
 		if userName
+
+			articleType = req.body.article_type
+			articleImage = ''
+
+			if articleType is 'image'
+
+				validFile = false
+
+				if req.files and req.files.file
+					fileType = req.files.file.type
+					if fileType in ['image/jpeg']
+						fileName = req.files.file.path
+						articleImage = fileName.split('\\')[2]
+						validFile = true
+
+				if not validFile
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '无效图片文件'
+					}))
+
+					return
 
 			articleTitle = req.body.article_title
 			articleContent = req.body.article_content
@@ -80,7 +116,8 @@ class Model
 				user_name: userName,
 				article_title: articleTitle,
 				article_content: articleContent,
-				article_tags: articleTagsAry
+				article_tags: articleTagsAry,
+				article_image: articleImage
 			}, (err, result) ->
 
 				if result
@@ -150,14 +187,5 @@ class Model
 					success: false,
 					data: '还未发布任何文章'
 				}))
-
-	index: (req, res) ->
-
-		userName = req.session.user_name || '匿名用户'
-		res.render('index', {user_name: userName})
-
-	login: (req, res) ->
-
-		res.render('login', {})
 
 module.exports = new Model()

@@ -4,6 +4,7 @@ model = require('./model')
 
 app = express()
 app.use(express.json())
+app.use(express.multipart({uploadDir: './public/data'}))
 app.use(express.urlencoded())
 app.use(express.cookieParser())
 app.use(express.cookieSession({secret: 'social_web'}))
@@ -15,6 +16,7 @@ app.set('views', __dirname + '/views')
 
 app.get '/', model.index
 app.get '/login', model.login
+app.get '/upload', model.upload
 
 app.post '/login', model.login
 app.post '/register', model.register

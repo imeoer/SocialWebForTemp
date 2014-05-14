@@ -11,7 +11,7 @@ var options = {
 	path: '/listMyArticle',
 	method: 'POST',
 	headers: {
-		'Content-Length': requestStr.length,
+		'Content-Length': Buffer.byteLength(requestStr, 'utf-8'),
 		'Content-Type': 'application/json'
 	}
 };

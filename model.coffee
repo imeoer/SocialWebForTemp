@@ -79,7 +79,7 @@ class Model
 
 	publish: (req, res) ->
 
-		userName = 'xx' #req.session.user_name
+		userName = req.session.user_name
 
 		if userName
 
@@ -117,7 +117,9 @@ class Model
 				article_title: articleTitle,
 				article_content: articleContent,
 				article_tags: articleTagsAry,
-				article_image: articleImage
+				article_image: articleImage,
+				article_comments: [],
+				publish_date: new Date()
 			}, (err, result) ->
 
 				if result
@@ -187,5 +189,102 @@ class Model
 					success: false,
 					data: '还未发布任何文章'
 				}))
+
+	addArticleComment: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			articleId = req.body.article_id
+			commentContent = req.body.comment_content
+
+			database.article.findOne {_id: articleId}, (err, result) ->
+				
+				if result
+
+					articleComments = result.article_comments
+					articleComments.push({
+						user_name: userName,
+						comment_content: commentContent,
+						date: new Date()
+					})
+
+					database.article.update {_id: articleId}, {$set: {article_comments: articleComments}}, (err, result) ->
+
+						if result
+
+							res.end(JSON.stringify({
+								success: true,
+								data: result
+							}))
+
+						else
+
+							res.end(JSON.stringify({
+								success: false,
+								data: '评论失败'
+							}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '文章不存在'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	forwardArticle: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			articleId = req.body.article_id
+
+			database.article.findOne {_id: articleId}, (err, result) ->
+				
+				if result
+
+					result.user_name = userName
+					result.article_comments = []
+					result.publish_date = new Date()
+					delete result._id
+
+					database.article.insert result, (err, result) ->
+
+						if result
+
+							res.end(JSON.stringify({
+								success: true,
+								data: '转发成功'
+							}))
+
+						else
+
+							res.end(JSON.stringify({
+								success: false,
+								data: '转发失败'
+							}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '文章不存在'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
 
 module.exports = new Model()

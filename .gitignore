@@ -1,2 +1,5 @@
 db
 public/data/
+database.js
+index.js
+model.js

@@ -23,5 +23,7 @@ app.post '/register', model.register
 app.post '/publish', model.publish
 app.post '/listMyArticle', model.listMyArticle
 app.post '/listAllArticle', model.listAllArticle
+app.post '/addArticleComment', model.addArticleComment
+app.post '/forwardArticle', model.forwardArticle
 
 app.listen(80)

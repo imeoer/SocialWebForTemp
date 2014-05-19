@@ -1,14 +1,12 @@
 var http = require('http');
 
 var requestStr = JSON.stringify({
-	article_title: 'wocao',
-	article_content: 'nihaoma',
-	article_tags: 'a,b,c,d'
+	article_id: 'cqKQInL6FufFuKN7'
 });
 
 var options = {
 	hostname: '127.0.0.1',
-	path: '/listMyArticle',
+	path: '/forwardArticle',
 	method: 'POST',
 	headers: {
 		'Content-Length': Buffer.byteLength(requestStr, 'utf-8'),

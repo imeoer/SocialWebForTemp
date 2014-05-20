@@ -6,16 +6,16 @@ class Model
 
 		that = @
 
-	index: (req, res) ->
+	indexPage: (req, res) ->
 
 		userName = req.session.user_name || '匿名用户'
 		res.render('index', {user_name: userName})
 
-	login: (req, res) ->
+	loginPage: (req, res) ->
 
 		res.render('login', {})
 
-	upload: (req, res) ->
+	uploadPage: (req, res) ->
 
 		res.render('upload', {})
 
@@ -60,7 +60,8 @@ class Model
 
 				database.user.insert {
 					user_name: userName,
-					pass_word: passWord
+					pass_word: passWord,
+					msgs: []
 				}, (err, result) ->
 
 					if result
@@ -76,6 +77,168 @@ class Model
 							success: false,
 							data: '注册失败'
 						}))
+
+	getUserInfo: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			database.article.findOne {user_name: userName}, (err, result) ->
+				
+				if result
+
+					res.end(JSON.stringify({
+						success: true,
+						data: result
+					}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '用户不存在'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	updateUserInfo: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			passWord = req.body.pass_word
+			userEmail = req.body.user_email
+			userMotto = req.body.user_motto
+
+			database.user.update {user_name: userName}, {$set: {
+				pass_word: passWord,
+				user_email: userEmail,
+				user_motto: userMotto
+			}}, (err, result) ->
+				
+				if result
+
+					res.end(JSON.stringify({
+						success: true,
+						data: '更新用户信息成功'
+					}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '更新用户信息失败'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	sendPrivateMessage: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			targetUserName = req.body.target_user_name
+			messageContent = req.body.message_content
+
+			database.user.findOne {user_name: targetUserName}, (err, result) ->
+				
+				if result
+
+					msgAry = result.msgs
+					msgAry.push({
+						from_user_name: userName,
+						message_content: messageContent,
+						have_read: false,
+						date: new Date()
+					})
+
+					database.user.update {user_name: targetUserName}, {$set: {msgs: msgAry}}, (err, result) ->
+
+						if result
+
+							res.end(JSON.stringify({
+								success: true,
+								data: '私信发送成功'
+							}))
+
+						else
+
+							res.end(JSON.stringify({
+								success: false,
+								data: '私信发送失败'
+							}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '用户不存在'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	markAllMsgHaveRead: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			database.user.findOne {user_name: userName}, (err, result) ->
+				
+				if result
+
+					msgAry = result.msgs
+					for (var i in msgAry) {
+						msgAry[i].have_read = true
+					}
+
+					database.user.update {user_name: msgAry}, {$set: {msgs: msgAry}}, (err, result) ->
+
+						if result
+
+							res.end(JSON.stringify({
+								success: true,
+								data: '所有私信已标记为已读'
+							}))
+
+						else
+
+							res.end(JSON.stringify({
+								success: false,
+								data: '标记私信为已读失败'
+							}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '用户不存在'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
 
 	publish: (req, res) ->
 
@@ -188,6 +351,26 @@ class Model
 				res.end(JSON.stringify({
 					success: false,
 					data: '还未发布任何文章'
+				}))
+
+	listUserArticle: (req, res) ->
+
+		userName = req.body.user_name
+
+		database.article.find {user_name: userName}, (err, results) ->
+
+			if results and results.length
+
+				res.end(JSON.stringify({
+					success: true,
+					data: results
+				}))
+
+			else
+
+				res.end(JSON.stringify({
+					success: false,
+					data: '该用户还未发布任何文章'
 				}))
 
 	addArticleComment: (req, res) ->

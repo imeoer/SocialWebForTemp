@@ -324,12 +324,17 @@ class Model
 
 						if results and results.length
 
+							# filter
 							newResults = _.filter results, (resultObj, idx) ->
 
 								if resultObj.user_name in focusUserAry
 									return true
 								else
 									return false
+
+							# sort
+							newResults = newResults.sort (articleA, articleB) ->
+								return articleA.publish_date > articleB.publish_date
 
 							res.end(JSON.stringify({
 								success: true,

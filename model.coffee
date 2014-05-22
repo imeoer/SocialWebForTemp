@@ -327,7 +327,7 @@ class Model
 							# filter
 							newResults = _.filter results, (resultObj, idx) ->
 
-								if resultObj.user_name in focusUserAry
+								if resultObj.user_name in focusUserAry or resultObj.user_name is userName
 									return true
 								else
 									return false

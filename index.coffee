@@ -26,13 +26,13 @@ app.post '/sendPrivateMessage', model.sendPrivateMessage #向指定用户发送�
 app.post '/markAllMsgHaveRead', model.markAllMsgHaveRead #标记当前用户收到的所有私信为已读
 
 app.post '/publish', model.publish #发布文章
-app.post '/listMyArticle', model.listMyArticle #获取当前用户文章
+app.post '/listMyArticle', model.listMyArticle #获取当前用户（包括所关注的人）的文章
 app.post '/listAllArticle', model.listAllArticle #获取所有用户文章
 app.post '/listUserArticle', model.listUserArticle #获取指定用户文章
 app.post '/addArticleComment', model.addArticleComment #评论指定文章
 app.post '/forwardArticle', model.forwardArticle #转发指定文章
 
-app.post '/focusUser', model.focusUser
-app.post '/unFocusUser', model.unFocusUser
+app.post '/focusUser', model.focusUser #关注指定用户
+app.post '/unFocusUser', model.unFocusUser #取消关注指定用户
 
 app.listen(80)

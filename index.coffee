@@ -32,4 +32,7 @@ app.post '/listUserArticle', model.listUserArticle #获取指定用户文章
 app.post '/addArticleComment', model.addArticleComment #评论指定文章
 app.post '/forwardArticle', model.forwardArticle #转发指定文章
 
+app.post '/focusUser', model.focusUser
+app.post '/unFocusUser', model.unFocusUser
+
 app.listen(80)

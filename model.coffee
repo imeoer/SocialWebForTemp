@@ -1,4 +1,5 @@
 database = require('./database')
+_ = require('underscore')
 
 class Model
 
@@ -61,7 +62,8 @@ class Model
 				database.user.insert {
 					user_name: userName,
 					pass_word: passWord,
-					msgs: []
+					msgs: [],
+					focus: []
 				}, (err, result) ->
 
 					if result
@@ -206,11 +208,11 @@ class Model
 				if result
 
 					msgAry = result.msgs
-					for (var i in msgAry) {
-						msgAry[i].have_read = true
-					}
 
-					database.user.update {user_name: msgAry}, {$set: {msgs: msgAry}}, (err, result) ->
+					_.each msgAry, (msgObj) ->
+						msgObj.have_read = true
+
+					database.user.update {user_name: userName}, {$set: {msgs: msgAry}}, (err, result) ->
 
 						if result
 
@@ -312,20 +314,40 @@ class Model
 
 		if userName
 
-			database.article.find {user_name: userName}, (err, results) ->
+			database.user.findOne {user_name: userName}, (err, result) ->
 
-				if results and results.length
+				if result
 
-					res.end(JSON.stringify({
-						success: true,
-						data: results
-					}))
+					focusUserAry = result.focus
+
+					database.article.find {}, (err, results) ->
+
+						if results and results.length
+
+							newResults = _.filter results, (resultObj, idx) ->
+
+								if resultObj.user_name in focusUserAry
+									return true
+								else
+									return false
+
+							res.end(JSON.stringify({
+								success: true,
+								data: newResults
+							}))
+
+						else
+
+							res.end(JSON.stringify({
+								success: false,
+								data: '还未有任何文章发布'
+							}))
 
 				else
 
 					res.end(JSON.stringify({
 						success: false,
-						data: '还未发布任何文章'
+						data: '用户不存在'
 					}))
 
 		else
@@ -461,6 +483,96 @@ class Model
 					res.end(JSON.stringify({
 						success: false,
 						data: '文章不存在'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	focusUser: (req, res) ->
+
+		userName = req.body.user_name
+
+		if userName
+
+			focusUserName = req.body.focus_user_name
+
+			database.user.findOne {user_name: userName}, (err, result) ->
+
+				if result
+
+					focusFriendAry = result.focus
+					newFocusFriendAry = _.union(focusFriendAry, [focusUserName])
+
+					database.user.update {user_name: userName}, {$set: {focus: newFocusFriendAry}}, (err, result) ->
+
+						if result
+
+							res.end(JSON.stringify({
+								success: true,
+								data: '已关注该用户'
+							}))
+
+						else
+
+							res.end(JSON.stringify({
+								success: false,
+								data: '关注该用户失败'
+							}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '用户不存在'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	unFocusUser: (req, res) ->
+
+		userName = req.body.user_name
+
+		if userName
+
+			unFocusUserName = req.body.unfocus_user_name
+
+			database.user.findOne {user_name: userName}, (err, result) ->
+
+				if result
+
+					focusFriendAry = result.focus
+					newFocusFriendAry = _.without(focusFriendAry, unFocusUserName)
+
+					database.user.update {user_name: userName}, {$set: {focus: newFocusFriendAry}}, (err, result) ->
+
+						if result
+
+							res.end(JSON.stringify({
+								success: true,
+								data: '已取消关注该用户'
+							}))
+
+						else
+
+							res.end(JSON.stringify({
+								success: false,
+								data: '取消关注该用户失败'
+							}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '用户不存在'
 					}))
 
 		else

@@ -1,0 +1,2 @@
+coffee index.coffee
+pause

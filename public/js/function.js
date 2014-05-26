@@ -1,5 +1,46 @@
 $(function() {
 	
+
+	//展示所有用户文章
+	$.post('/listAllArticle', {
+	}, function(result) {
+		if (result.success) {
+			var htmlTxt = '';
+			for (var i in result.data) {
+				var article = result.data[i];
+				var item = '<li><a>' +
+								'<em>' + article.article_tags + '</em>' +
+								'<h3>' + article.article_title + '<span>' + article.article_content + '</span></h3>' +
+								// '<img src="images/img3.png" />' +
+							'</a></li>';
+				htmlTxt += item;
+			}
+			$('#all_article').html(htmlTxt);
+		} else {
+			alert(result.data);
+		}
+	}, 'JSON');
+
+	//展示当前用户（包括所关注的人）的文章
+	$.post('/listMyArticle', {
+	}, function(result) {
+		if (result.success) {
+			var htmlTxt = '';
+			for (var i in result.data) {
+				var article = result.data[i];
+				var item = '<li><a>' +
+								'<em>' + article.article_tags + '</em>' +
+								'<h3>' + article.article_title + '<span>' + article.article_content + '</span></h3>' +
+								// '<img src="images/img3.png" />' +
+							'</a></li>';
+				htmlTxt += item;
+			}
+			$('#all_article').html(htmlTxt);
+		} else {
+			alert(result.data);
+		}
+	}, 'JSON');
+
 	// 绑定登录单击事件
 	$('.submit_l').on('click', function() {
 		var userName = $('#username').val();

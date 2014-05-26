@@ -34,5 +34,6 @@ app.post '/forwardArticle', model.forwardArticle #转发指定文章
 
 app.post '/focusUser', model.focusUser #关注指定用户
 app.post '/unFocusUser', model.unFocusUser #取消关注指定用户
+app.post '/getTagAllArticle', model.getTagAllArticle #获取指定标签的所有文章
 
 app.listen(80)

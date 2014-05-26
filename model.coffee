@@ -591,4 +591,42 @@ class Model
 				data: '请先登录'
 			}))
 
+	getTagAllArticle: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			articleTag = req.body.article_tag
+
+			database.article.find {}, (err, results) ->
+				
+				if results
+
+					resultAry = []
+
+					_.each results, (articleObj) ->
+						if articleTag in articleObj.article_tags
+							resultAry.push(articleObj)
+						null
+
+					res.end(JSON.stringify({
+						success: true,
+						data: resultAry
+					}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '未发现任何文章'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
 module.exports = new Model()

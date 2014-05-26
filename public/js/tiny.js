@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+	
 	var loginroll = $('.login_cont ul');
 	$('.handover').click(function(){
 		loginroll.animate({marginLeft:'-=935px'},800,function(){
@@ -19,17 +19,25 @@ $(document).ready(function(){
 			$('.nav').animate({left:(window.innerWidth-255) + 'px'},500);
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
+			
+			$('.article').animate({left:'-155px'},500);
+			$('.publish').delay(500).animate({width:'580px'},500);
+			$('.publish .user_msg,.publish .msg_box').attr("style","display:none;");
+			$('.publish ul').slideUp("slow");
+			$('.publish ul').slideDown("slow");
+			$('.publish ul li').find('form').fadeOut(250);
+			$('.publish ul li').eq(($('.nav ul li').index($(this))*1-1)).find('form').delay(500).fadeIn(250);
 		}else{
 			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
-			$('.publish ul').animate({height:'0px'},250);
-			$('.publish ul').animate({height:'280px'},250);
+			$('.publish .user_msg,.publish .msg_box').attr("style","display:none;");
+			$('.publish ul').slideUp("slow");
+			$('.publish ul').slideDown("slow");
 			$('.publish ul li').find('form').fadeOut(250);
 			$('.publish ul li').eq(($('.nav ul li').index($(this))*1-1)).find('form').delay(500).fadeIn(250);
 		}
 
 	});
-
 
 	$('.nav ul li.ico_home').click(function(){
 		$('.publish').animate({width:'0px'},500);
@@ -42,4 +50,73 @@ $(document).ready(function(){
 		$('.publish').animate({width:'0px'},500);
 		$('.article').delay(500).animate({left:(window.innerWidth-940) + 'px'},500);
 	});
+
+	$('.msg_box .comment p em').click(function(){
+		$(this).parent().parent().find('.reply').slideToggle(200);
+	});
+
+	$('.nav .ico_msg').click(function(){
+		if(($('.nav').css("left").substring(1,2)*1) == 5){
+			$('.nav').animate({left:(window.innerWidth-255) + 'px'},500);
+			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
+			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
+
+			$('.article').animate({left:'-155px'},500);
+			$('.publish').delay(500).animate({width:'580px'},500);
+			$('.publish ul').attr("style","display:none;");
+			$('.publish .user_msg').attr("style","display:none;");
+			$('.publish .msg_box').show("slow");
+		}else{
+			$('.article').animate({left:'-155px'},500);
+			$('.publish').delay(500).animate({width:'580px'},500);
+			$('.publish ul').attr("style","display:none;");
+			$('.publish .user_msg').attr("style","display:none;");
+			$('.publish .msg_box').show("slow");
+		}
+	});
+
+	$('.nav .ico_set').click(function(){
+		if(($('.nav').css("left").substring(1,2)*1) == 5){
+			$('.nav').animate({left:(window.innerWidth-255) + 'px'},500);
+			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
+			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
+
+			$('.article').animate({left:'-155px'},500);
+			$('.publish').delay(500).animate({width:'580px'},500);
+			$('.publish ul').attr("style","display:none;");
+			$('.publish .msg_box').attr("style","display:none;");
+			$('.publish .user_msg').show("slow");
+		}else{
+			$('.article').animate({left:'-155px'},500);
+			$('.publish').delay(500).animate({width:'580px'},500);
+			$('.publish ul').attr("style","display:none;");
+			$('.publish .msg_box').attr("style","display:none;");
+			$('.publish .user_msg').show("slow");
+		}
+	});
+
+	$('.publish .user_msg .close').click(function(){
+		$('.publish').animate({width:'0px'},500);
+		$('.article').delay(500).animate({left:(window.innerWidth-940) + 'px'},500);
+	});
+
+	$('.article .love_btn').toggle(function(){
+		$(this).attr("class","love_btn active");
+	},function(){
+		$(this).attr("class","love_btn");
+	});
+
+	$('.article .comt_btn').toggle(function(){
+		$(this).parent().parent().find("dl").show("slow");
+		$(this).attr("class","comt_btn active");
+	},function(){
+		$(this).parent().parent().find("dl").hide("slow");
+		$(this).attr("class","comt_btn");
+	});
+
+	$('.article .comment_box dd a').click(function(){
+		$(this).parent().parent().hide("slow");
+		$(this).parent().parent().parent().find('.comt_btn').attr("class","comt_btn");
+	});
+
 });

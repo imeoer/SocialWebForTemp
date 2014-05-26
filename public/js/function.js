@@ -92,19 +92,26 @@ $(function() {
 	});
 
 
-	//上传图像
-	// $('#upimg').uploadFile({//这个地方我是要点击上传图片按钮触发事件？还是其他的一样的提交按钮？
-	//     url: '/publish',
-	//     fileName: 'file',
-	//     dynamicFormData: function() {
-	//         return {
-	//             article_type: 'image',
-	//             article_title: $('#img_title').val(),
-	//             article_content: $('#img_cont').val(),
-	//             article_tags: $('#img_tags').val()
-	//         };        
-	//     }
-	// });
+	// 上传图像
+	$('#upimg').uploadFile({//这个地方我是要点击上传图片按钮触发事件？还是其他的一样的提交按钮？
+	    url: '/publish',
+	    fileName: 'file',
+	    showPreivew: false,
+	    showFileCounter: false,
+	    showStatusAfterSuccess: false,
+	    showDone: false,
+	    dynamicFormData: function() {
+	        return {
+	            article_type: 'image',
+	            article_title: $('#img_title').val(),
+	            article_content: $('#img_cont').val(),
+	            article_tags: $('#img_tags').val()
+	        };        
+	    },
+		onSuccess:function(files, data, xhr, pd) {
+			alert(JSON.stringify(data));
+		}
+	});
 
 	//上传音频
 	$('#upaudio').on('click', function() {

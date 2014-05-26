@@ -46,12 +46,13 @@ a:hover{text-decoration:none;cursor:pointer;}
 .nav ul li.ico_link a em{background-position:0px -950px;}
 .nav ul li a span{font:18px/60px "微软雅黑";color:#fff;}
 .nav ul li a:hover,.nav ul li a.active{background-color:rgba(0,0,0,0.5);}
-.nav dl{height:22px;padding:0px 67px 5px;margin-bottom:10px;}
+.nav dl{height:22px;padding:0px 45px 5px;margin-bottom:10px;}
 .nav dl dd{float:left;width:22px;height:22px;margin:0px 10px;}
 .nav dl dd a{display:block;width:22px;height:22px;background:url(../images/icos.png) no-repeat 0 0;}
 .nav dl dd.ico_msg a{background-position:0px -997px;}
 .nav dl dd.ico_set a{background-position:0px -1050px;}
 .nav dl dd.ico_exit a{background-position:0px -1101px;}
+.nav dl dd.ico_friend a{background-position:0px -1498px;}
 
 /* index */
 .index_cont{position:fixed;left:255px;top:0px;height:100%;overflow:scroll;}
@@ -67,8 +68,9 @@ a:hover{text-decoration:none;cursor:pointer;}
 /* article */
 .article{width:645px;padding:20px;float:right;position:fixed;left:-685px;top:0px;height:100%;overflow:scroll;}
 .article li{width:625px;background:url(../images/publish_arrow.png) no-repeat 77px 25px;margin-bottom:20px;}
-.article li a.avatar{float:left;width:64px;height:64px;}
-.article li a.avatar img{width:64px;height:64px;border-radius:5px;}
+.article li .avatar{float:left;width:64px;cursor:pointer;}
+.article li .avatar img{display:block;width:64px;height:64px;border-radius:5px;cursor:pointer;}
+.article li .avatar span{display:block;font:12px/30px "微软雅黑";color:#1aafe4;text-align:center;}
 .article li .cont_box{float:right;width:500px;padding:5px 20px;background-color:#fff;border-radius:5px;box-shadow:2px 2px 3px 0px #333;}
 .article li .cont_box .title h3 a{font:16px/40px "微软雅黑";color:#666;}
 .article li .cont_box .title .more{float:right;}

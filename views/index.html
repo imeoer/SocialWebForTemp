@@ -6,6 +6,7 @@
 <link type="text/css" rel="stylesheet" href="css/tiny.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/tiny.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
 <title>index</title>
 </head>
 <body>
@@ -144,22 +145,22 @@
 				<form>
 					<div class="cont_box">
 						<div class="title">
-							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+							<input id="text_title" class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
 						</div>
 						<div class="tools">
 							<img src="images/edit_tools.jpg" />
 						</div>
 						<div class="cont">
-							<textarea>请输入文章内容</textarea>
+							<textarea class="text_cont">请输入文章内容</textarea>
 						</div>
 						<div class="tags">
 							<em></em>
-							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+							<input id="text_tags" class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
 						</div>
 					</div>
 					<div class="btns">
 						<span class="btn cancel">Cancel</span>
-						<input class="submit" type="submit" value="Done" />
+						<i id="uptext" class="submit">Done</i>
 					</div>
 				</form>
 			</li>
@@ -167,25 +168,25 @@
 				<form class="hide">
 					<div class="cont_box">
 						<div class="title">
-							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+							<input id="img_title" class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
 						</div>
 						<div class="cont">
-							<a class="upimg"><em></em><span>上传图片</span></a>
+							<a id="upimg" class="upimg"><em></em><span>上传图片</span></a>
 						</div>
 						<div class="tools">
 							<img src="images/edit_tools.jpg" />
 						</div>
 						<div class="cont">
-							<textarea>请输入图片描述（可不填）</textarea>
+							<textarea id="img_cont">请输入图片描述（可不填）</textarea>
 						</div>
 						<div class="tags">
 							<em></em>
-							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+							<input id="img_tags" class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
 						</div>
 					</div>
 					<div class="btns">
 						<span class="btn cancel">Cancel</span>
-						<input class="submit" type="submit" value="Done" />
+						<i id="upimg" class="submit">Done</i>
 					</div>
 				</form>
 			</li>
@@ -193,25 +194,25 @@
 				<form class="hide">
 					<div class="cont_box">
 						<div class="title">
-							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+							<input id="audio_title" class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
 						</div>
 						<div class="title">
-							<input class="text" type="text" value="音乐链接" onfocus="javascript:if(this.value=='音乐链接'){this.value=''};" onblur="if(this.value==''||this.value=='音乐链接'){this.value='音乐链接'};" />
+							<input id="audio_url" class="text" type="text" value="音乐链接" onfocus="javascript:if(this.value=='音乐链接'){this.value=''};" onblur="if(this.value==''||this.value=='音乐链接'){this.value='音乐链接'};" />
 						</div>
 						<div class="tools">
 							<img src="images/edit_tools.jpg" />
 						</div>
 						<div class="cont">
-							<textarea>请输入音乐描述（可不填）</textarea>
+							<textarea id="audio_cont">请输入音乐描述（可不填）</textarea>
 						</div>
 						<div class="tags">
 							<em></em>
-							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+							<input id="audio_tags" class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
 						</div>
 					</div>
 					<div class="btns">
 						<span class="btn cancel">Cancel</span>
-						<input class="submit" type="submit" value="Done" />
+						<i id="upaudio" class="submit">Done</i>
 					</div>
 				</form>
 			</li>
@@ -219,25 +220,25 @@
 				<form class="hide">
 					<div class="cont_box">
 						<div class="title">
-							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+							<input id="video_title" class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
 						</div>
 						<div class="title">
-							<input class="text" type="text" value="视频链接" onfocus="javascript:if(this.value=='视频链接'){this.value=''};" onblur="if(this.value==''||this.value=='视频链接'){this.value='视频链接'};" />
+							<input id="video_url" class="text" type="text" value="视频链接" onfocus="javascript:if(this.value=='视频链接'){this.value=''};" onblur="if(this.value==''||this.value=='视频链接'){this.value='视频链接'};" />
 						</div>
 						<div class="tools">
 							<img src="images/edit_tools.jpg" />
 						</div>
 						<div class="cont">
-							<textarea>请输入视频描述（可不填）</textarea>
+							<textarea id="video_cont">请输入视频描述（可不填）</textarea>
 						</div>
 						<div class="tags">
 							<em></em>
-							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+							<input id="video_tags" class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
 						</div>
 					</div>
 					<div class="btns">
 						<span class="btn cancel">Cancel</span>
-						<input class="submit" type="submit" value="Done" />
+						<i id="upvideo" class="submit">Done</i>
 					</div>
 				</form>
 			</li>
@@ -245,25 +246,25 @@
 				<form class="hide">
 					<div class="cont_box">
 						<div class="title">
-							<input class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
+							<input id="link_title" class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
 						</div>
 						<div class="title">
-							<input class="text" type="text" value="分享链接" onfocus="javascript:if(this.value=='分享链接'){this.value=''};" onblur="if(this.value==''||this.value=='分享链接'){this.value='分享链接'};" />
+							<input id="link_url" class="text" type="text" value="分享链接" onfocus="javascript:if(this.value=='分享链接'){this.value=''};" onblur="if(this.value==''||this.value=='分享链接'){this.value='分享链接'};" />
 						</div>
 						<div class="tools">
 							<img src="images/edit_tools.jpg" />
 						</div>
 						<div class="cont">
-							<textarea>请输入链接描述（可不填）</textarea>
+							<textarea id="link_cont">请输入链接描述（可不填）</textarea>
 						</div>
 						<div class="tags">
 							<em></em>
-							<input class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
+							<input id="link_tags" class="text" type="text" value="标签" onfocus="javascript:if(this.value=='标签'){this.value=''};" onblur="if(this.value==''||this.value=='标签'){this.value='标签'};" />
 						</div>
 					</div>
 					<div class="btns">
 						<span class="btn cancel">Cancel</span>
-						<input class="submit" type="submit" value="Done" />
+						<i id="uplink" class="submit">Done</i>
 					</div>
 				</form>
 			</li>
@@ -272,7 +273,10 @@
 	<div class="article">
 		<ul>
 			<li>
-				<a class="avatar"><img src="images/other1.jpg"></a>
+				<div class="avatar">
+					<img src="images/other1.jpg">
+					<span>加关注</span>
+				</div>
 				<div class="cont_box">
 					<div class="title">
 						<div class="more"><a>╳</a></div>
@@ -312,7 +316,10 @@
 				<div class="clear"></div>
 			</li>
 			<li>
-				<a class="avatar"><img src="images/other2.jpg"></a>
+				<div class="avatar">
+					<img src="images/other1.jpg">
+					<span>加关注</span>
+				</div>
 				<div class="cont_box">
 					<div class="title">
 						<div class="more"><a>╳</a></div>
@@ -364,6 +371,7 @@
 		<h2><a>Tiny</a></h2>
 		<dl>
 			<dd class="ico_msg"><a></a></dd>
+			<dd class="ico_friend"><a></a></dd>
 			<dd class="ico_set"><a></a></dd>
 			<dd class="ico_exit"><a></a></dd>
 		</dl>

@@ -30,4 +30,103 @@ $(function() {
 		}, 'JSON');
 	});
 
+	//上传文本
+	$('#uptext').on('click', function() {
+		var title = $('#text_title').val();
+		var cont = $('#text_cont').val();
+		var tags = $('#text_tags').val();
+		$.post('/publish', {
+			article_type:'text',
+			article_title: title,
+			article_content: cont,
+			article_url: '文章木有连接的',
+			article_tags: tags
+		}, function(result) {
+			if (result.success) {
+				window.location = '/';
+			} else {
+				alert(result.data);
+			}
+		}, 'JSON');
+	});
+
+
+	//上传图像
+	// $('#upimg').uploadFile({//这个地方我是要点击上传图片按钮触发事件？还是其他的一样的提交按钮？
+	//     url: '/publish',
+	//     fileName: 'file',
+	//     dynamicFormData: function() {
+	//         return {
+	//             article_type: 'image',
+	//             article_title: $('#img_title').val(),
+	//             article_content: $('#img_cont').val(),
+	//             article_tags: $('#img_tags').val()
+	//         };        
+	//     }
+	// });
+
+	//上传音频
+	$('#upaudio').on('click', function() {
+		var title = $('#audio_title').val();
+		var cont = $('#audio_cont').val();
+		var url = $('#audio_url').val();
+		var tags = $('#audio_tags').val();
+		$.post('/publish', {
+			article_type:'audio',
+			article_title: title,
+			article_content: cont,
+			article_url: url,
+			article_tags: tags
+		}, function(result) {
+			if (result.success) {
+				window.location = '/';
+			} else {
+				alert(result.data);
+			}
+		}, 'JSON');
+	});
+
+	//上传视频
+	$('#upvideo').on('click', function() {
+		var title = $('#video_title').val();
+		var cont = $('#video_cont').val();
+		var url = $('#video_url').val();
+		var tags = $('#video_tags').val();
+		$.post('/publish', {
+			article_type:'video',
+			article_title: title,
+			article_content: cont,
+			article_url: url,
+			article_tags: tags
+		}, function(result) {
+			if (result.success) {
+				window.location = '/';
+			} else {
+				alert(result.data);
+			}
+		}, 'JSON');
+	});
+
+
+	//上传连接
+	$('#uplink').on('click', function() {
+		var title = $('#link_title').val();
+		var cont = $('#link_cont').val();
+		var url = $('#link_url').val();
+		var tags = $('#link_tags').val();
+		$.post('/publish', {
+			article_type:'link',
+			article_title: title,
+			article_content: cont,
+			article_url: url,
+			article_tags: tags
+		}, function(result) {
+			if (result.success) {
+				window.location = '/';
+			} else {
+				alert(result.data);
+			}
+		}, 'JSON');
+	});
+
 });

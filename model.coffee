@@ -274,6 +274,7 @@ class Model
 			articleTitle = req.body.article_title
 			articleContent = req.body.article_content
 			articleTags = req.body.article_tags
+			articleUrl = req.body.article_url
 
 			articleTagsAry = articleTags.split(',')
 			
@@ -283,6 +284,7 @@ class Model
 				article_content: articleContent,
 				article_tags: articleTagsAry,
 				article_image: articleImage,
+				article_url: articleUrl,
 				article_comments: [],
 				publish_date: new Date()
 			}, (err, result) ->

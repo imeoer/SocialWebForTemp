@@ -59,7 +59,7 @@
             deleteCallback: false,
             afterUploadAll: false,
             uploadButtonClass: "ajax-file-upload",
-            dragDropStr: "<span><b>Drag &amp; Drop Files</b></span>",
+            dragDropStr: "<span><b>点击或拖拽图片上传</b></span>",
             abortStr: "Abort",
             cancelStr: "Cancel",
             deletelStr: "Delete",

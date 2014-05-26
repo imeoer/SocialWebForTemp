@@ -257,9 +257,11 @@ class Model
 
 				if req.files and req.files.file
 					fileType = req.files.file.type
-					if fileType in ['image/jpeg']
+					if fileType in ['image/jpeg', 'image/png']
 						fileName = req.files.file.path
 						articleImage = fileName.split('\\')[2]
+						if not articleImage # for linux
+							articleImage = fileName.split('/')[2]
 						validFile = true
 
 				if not validFile

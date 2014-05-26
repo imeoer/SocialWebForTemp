@@ -114,7 +114,7 @@ a:hover{text-decoration:none;cursor:pointer;}
 .publish li .cont textarea{width:478px;height:100px;padding:5px 10px;border:0px;resize:none;outline:none;font:14px/22px "微软雅黑";color:#999;}
 
 .publish li .cont .upimg{display:block;padding:20px 0px;opacity:0.3;transition:all 0.5s;}
-.publish li .cont .upimg em{display:block;width:50px;height:45px;margin:10px auto 0px;background:url(../images/icos.png) no-repeat 0px -1150px;}
+.publish li .cont .btn{display:block;width:50px;height:45px;margin:10px auto 0px;background:url(../images/icos.png) no-repeat 0px -1150px;}
 .publish li .cont .upimg span{display:block;text-align:center;font:14px/30px "微软雅黑";color:#000;}
 .publish li .cont .upimg:hover{opacity:0.5;}
 .publish li .tags{height:38px;}

@@ -5,6 +5,7 @@
 <link type="text/css" rel="stylesheet" href="css/basic.css" />
 <link type="text/css" rel="stylesheet" href="css/tiny.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.uploadfile.js"></script>
 <script type="text/javascript" src="js/tiny.js"></script>
 <script type="text/javascript" src="js/function.js"></script>
 <title>index</title>
@@ -220,8 +221,8 @@
 						<div class="title">
 							<input id="img_title" class="text" type="text" value="标题" onfocus="javascript:if(this.value=='标题'){this.value=''};" onblur="if(this.value==''||this.value=='标题'){this.value='标题'};" />
 						</div>
-						<div class="cont">
-							<a id="upimg" class="upimg"><em></em><span>上传图片</span></a>
+						<div class="cont" style="text-align:center;">
+							<a id="upimg" class="upimg"><div class="btn"></div></a>
 						</div>
 						<div class="tools">
 							<img src="images/edit_tools.jpg" />
@@ -236,7 +237,7 @@
 					</div>
 					<div class="btns">
 						<span class="btn cancel">Cancel</span>
-						<i id="upimg" class="submit">Done</i>
+<!-- 						<i id="upimg" class="submit">Done</i> -->
 					</div>
 				</form>
 			</li>

@@ -22,6 +22,7 @@ app.post '/login', model.login #登录
 app.post '/register', model.register #注册
 app.post '/getUserInfo', model.getUserInfo #获取当前用户信息
 app.post '/updateUserInfo', model.updateUserInfo #更新当前用户信息
+app.post '/updateUserAvatar', model.updateUserAvatar #更新用户头像
 app.post '/sendPrivateMessage', model.sendPrivateMessage #向指定用户发送私信
 app.post '/markAllMsgHaveRead', model.markAllMsgHaveRead #标记当前用户收到的所有私信为已读
 

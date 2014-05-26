@@ -116,12 +116,12 @@ class Model
 		if userName
 
 			passWord = req.body.pass_word
-			userEmail = req.body.user_email
+			userNick = req.body.user_nick
 			userMotto = req.body.user_motto
 
 			database.user.update {user_name: userName}, {$set: {
 				pass_word: passWord,
-				user_email: userEmail,
+				user_nick: userNick,
 				user_motto: userMotto
 			}}, (err, result) ->
 				
@@ -137,6 +137,61 @@ class Model
 					res.end(JSON.stringify({
 						success: false,
 						data: '更新用户信息失败'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	updateUserAvatar: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			validFile = false
+
+			articleImage = ''
+
+			if req.files and req.files.file
+				fileType = req.files.file.type
+				if fileType in ['image/jpeg', 'image/png']
+					fileName = req.files.file.path
+					articleImage = fileName.split('\\')[2]
+					if not articleImage # for linux
+						articleImage = fileName.split('/')[2]
+					validFile = true
+
+			if (not validFile) or (not articleImage)
+
+				res.end(JSON.stringify({
+					success: false,
+					data: '无效图片文件'
+				}))
+
+				return
+
+			database.user.update {user_name: userName}, {$set: {
+				user_avatar: articleImage
+			}}, (err, result) ->
+
+				if result
+
+					res.end(JSON.stringify({
+						success: true,
+						data: {
+							user_avatar: articleImage
+						}
+					}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '更新头像设置失败'
 					}))
 
 		else

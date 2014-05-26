@@ -139,8 +139,8 @@ a:hover{text-decoration:none;cursor:pointer;}
 
 
 .publish .msg_box{display:none; position:absolute;width:500px;padding:20px;margin:20px;overflow:hidden;background-color:#fff;border-radius:5px;box-shadow:2px 2px 3px 0px #333;}
-.publish .msg_box dd{padding:20px 0px;border-top:1px dotted #ccc;}
-.publish .msg_box dd:first-child{border-top:0px;padding-top:0px;}
+.publish .msg_box dd{padding-top:20px;margin-top:20px;border-top:1px dotted #ccc;}
+.publish .msg_box dd:first-child{border-top:0px;margin-top:0px;padding-top:0px;}
 .publish .msg_box dd .avatar{float:left;width:60px;height:60px;}
 .publish .msg_box dd .avatar img{width:60px;height:60px;}
 .publish .msg_box dd .comment{float:right;width:420px;}
@@ -157,3 +157,16 @@ a:hover{text-decoration:none;cursor:pointer;}
 .publish .msg_box dd .comment .reply em{float:right;height:28px;font:14px/26px "微软雅黑";background-color:#1aafe4;color:#fff;padding:0px 10px;cursor:pointer;border-radius:3px;margin-top:28px;}
 .publish .msg_box dd .comment .reply em:hover{background-color:#008bbd;}
 
+.publish .friend_list{display:none; position:absolute;width:500px;padding:20px;margin:20px;overflow:hidden;background-color:#fff;border-radius:5px;box-shadow:2px 2px 3px 0px #333;}
+.publish .friend_list dd{padding-top:20px;margin-top:20px;border-top:1px dotted #ccc;}
+.publish .friend_list dd:first-child{border-top:0px;margin-top:0px;padding-top:0px;}
+.publish .friend_list dd .avatar{float:left;width:60px;height:60px;}
+.publish .friend_list dd .avatar img{width:60px;height:60px;}
+.publish .friend_list dd .comment{float:right;width:420px;}
+.publish .friend_list dd .comment h3{height:30px;font:14px/30px "微软雅黑";overflow:hidden;}
+.publish .friend_list dd .comment h3 a{color:#1aafe4;}
+.publish .friend_list dd .comment h3 em{float:right;color:#999;font-size:12px;}
+.publish .friend_list dd .comment h3 em:hover{color:#1aafe4;cursor:pointer;}
+.publish .friend_list dd .comment p{height:30px;font:12px/30px "微软雅黑";color:#999;overflow:hidden;margin-top:5px;}
+.publish .friend_list dd .comment p em{float:right;height:28px;font:14px/26px "微软雅黑";background-color:#1aafe4;color:#fff;padding:0px 10px;cursor:pointer;border-radius:3px;}
+.publish .friend_list dd .comment p .text{font:14px/16px "微软雅黑";color:#999;border:1px solid #ddd;border-radius:3px;padding:5px;width:337px;height:16px;resize:none;}

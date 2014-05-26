@@ -22,7 +22,7 @@ $(document).ready(function(){
 			
 			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
-			$('.publish .user_msg,.publish .msg_box').attr("style","display:none;");
+			$('.publish .user_msg,.publish .msg_box,.publish .friend_list').attr("style","display:none;");
 			$('.publish ul').slideUp("slow");
 			$('.publish ul').slideDown("slow");
 			$('.publish ul li').find('form').fadeOut(250);
@@ -64,13 +64,13 @@ $(document).ready(function(){
 			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
-			$('.publish .user_msg').attr("style","display:none;");
+			$('.publish .user_msg,.publish .friend_list').attr("style","display:none;");
 			$('.publish .msg_box').show("slow");
 		}else{
 			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
-			$('.publish .user_msg').attr("style","display:none;");
+			$('.publish .user_msg,.publish .friend_list').attr("style","display:none;");
 			$('.publish .msg_box').show("slow");
 		}
 	});
@@ -84,14 +84,34 @@ $(document).ready(function(){
 			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
-			$('.publish .msg_box').attr("style","display:none;");
+			$('.publish .msg_box,.publish .friend_list').attr("style","display:none;");
 			$('.publish .user_msg').show("slow");
 		}else{
 			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
-			$('.publish .msg_box').attr("style","display:none;");
+			$('.publish .msg_box,.publish .friend_list').attr("style","display:none;");
 			$('.publish .user_msg').show("slow");
+		}
+	});
+
+	$('.nav .ico_friend').click(function(){
+		if(($('.nav').css("left").substring(1,2)*1) == 5){
+			$('.nav').animate({left:(window.innerWidth-255) + 'px'},500);
+			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
+			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
+
+			$('.article').animate({left:'-155px'},500);
+			$('.publish').delay(500).animate({width:'580px'},500);
+			$('.publish ul').attr("style","display:none;");
+			$('.publish .msg_box,.publish .user_msg').attr("style","display:none;");
+			$('.publish .friend_list').show("slow");
+		}else{
+			$('.article').animate({left:'-155px'},500);
+			$('.publish').delay(500).animate({width:'580px'},500);
+			$('.publish ul').attr("style","display:none;");
+			$('.publish .msg_box,.publish .user_msg').attr("style","display:none;");
+			$('.publish .friend_list').show("slow");
 		}
 	});
 

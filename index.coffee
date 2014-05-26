@@ -32,6 +32,7 @@ app.post '/listAllArticle', model.listAllArticle #获取所有用户文章
 app.post '/listUserArticle', model.listUserArticle #获取指定用户文章
 app.post '/addArticleComment', model.addArticleComment #评论指定文章
 app.post '/forwardArticle', model.forwardArticle #转发指定文章
+app.post '/removeArticle', model.removeArticle #删除指定文章
 
 app.post '/focusUser', model.focusUser #关注指定用户
 app.post '/unFocusUser', model.unFocusUser #取消关注指定用户

@@ -154,18 +154,20 @@ class Model
 
 			validFile = false
 
-			articleImage = ''
+			avaterImage = ''
+			avaterOldPath = ''
+			fileType = ''
 
 			if req.files and req.files.file
 				fileType = req.files.file.type
 				if fileType in ['image/jpeg', 'image/png']
-					fileName = req.files.file.path
-					articleImage = fileName.split('\\')[2]
-					if not articleImage # for linux
-						articleImage = fileName.split('/')[2]
+					avaterOldPath = req.files.file.path
+					avaterImage = avaterOldPath.split('\\')[2]
+					if not avaterImage # for linux
+						avaterImage = avaterOldPath.split('/')[2]
 					validFile = true
 
-			if (not validFile) or (not articleImage)
+			if (not validFile) or (not avaterImage)
 
 				res.end(JSON.stringify({
 					success: false,
@@ -174,25 +176,15 @@ class Model
 
 				return
 
-			database.user.update {user_name: userName}, {$set: {
-				user_avatar: articleImage
-			}}, (err, result) ->
+			if fileType is 'image/jpeg'
+				fs.renameSync(avaterOldPath, 'data/' + userName + '.jpg')
+			else if fileType is 'image/png'
+				fs.renameSync(avaterOldPath, 'data/' + userName + '.png')
 
-				if result
-
-					res.end(JSON.stringify({
-						success: true,
-						data: {
-							user_avatar: articleImage
-						}
-					}))
-
-				else
-
-					res.end(JSON.stringify({
-						success: false,
-						data: '更新头像设置失败'
-					}))
+			res.end(JSON.stringify({
+				success: true,
+				data: '更新头像设置成功'
+			}))
 
 		else
 
@@ -668,6 +660,37 @@ class Model
 					res.end(JSON.stringify({
 						success: true,
 						data: resultAry
+					}))
+
+				else
+
+					res.end(JSON.stringify({
+						success: false,
+						data: '未发现任何文章'
+					}))
+
+		else
+
+			res.end(JSON.stringify({
+				success: false,
+				data: '请先登录'
+			}))
+
+	removeArticle: (req, res) ->
+
+		userName = req.session.user_name
+
+		if userName
+
+			articleID = req.body.article_id
+
+			database.article.remove {_id: articleID, user_name: userName}, (err, results) ->
+				
+				if results and results.length
+
+					res.end(JSON.stringify({
+						success: true,
+						data: '删除文章成功'
 					}))
 
 				else

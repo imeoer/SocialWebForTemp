@@ -20,6 +20,7 @@ var getUserInfo = function() {
 			userInfo = result.data;
 			$('#user_name').text(userInfo.user_name);
 			refreshFriendList();
+			refreshPriMsgList();
 		} else {
 			alert(result.data);
 		}
@@ -63,4 +64,37 @@ var sendPrivateMsg = function(userName, content) {
 		}
 		alert(result.data);
 	}, 'JSON');
+};
+
+var refreshPriMsgList = function() {
+	var msgAry = userInfo.msgs;
+	var result = '';
+	for (var i in msgAry) {
+		var userName = msgAry[i].from_user_name;
+		var content = msgAry[i].message_content;
+		var date = msgAry[i].date;
+		var item = '<dd>' +
+			'<div class="avatar">' +
+				'<a><img src="images/avatar.jpg" /></a>' +
+			'</div>' +
+			'<div class="comment">' +
+				'<h3>' +
+					'<em>╳</em>' +
+					'<a>' + userName + '</a>' +
+					'<span> ' + date.toString() + '</span>' +
+				'</h3>' +
+				'<p>' +
+					'<em>回复</em>' +
+					'<span>' + content + '</span>' +
+				'</p>' +
+				'<div class="reply">' +
+					'<em>发表</em>' +
+					'<textarea></textarea>' +
+				'</div>' +
+			'</div>' +
+			'<div class="clear"></div>' +
+		'</dd>';
+		result += item;
+	}
+	$('.msg_box').html(result);
 };

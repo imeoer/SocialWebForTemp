@@ -8,11 +8,19 @@ $(function() {
 			var htmlTxt = '';
 			for (var i in result.data) {
 				var article = result.data[i];
-				var item = '<li><a>' +
+				if(article.article_image){
+					var item = '<li><a>' +
 								'<em>' + article.article_tags + '</em>' +
-								'<h3>' + article.article_title + '<span>' + article.article_content + '</span></h3>' +
+								'<h3><i>' + article.article_title + '</i><span>' + article.article_content + '</span></h3>' +
+								'<img src="data/' + article.article_image + '" />' +
+							'</a></li>';
+				}else{
+					var item = '<li><a>' +
+								'<em>' + article.article_tags + '</em>' +
+								'<h3><i>' + article.article_title + '</i><span>' + article.article_content + '</span></h3>' +
 								// '<img src="images/img3.png" />' +
 							'</a></li>';
+				}
 				htmlTxt += item;
 			}
 			$('#all_article').html(htmlTxt);
@@ -28,11 +36,93 @@ $(function() {
 			var htmlTxt = '';
 			for (var i in result.data) {
 				var article = result.data[i];
-				var item = '<li><a>' +
-								'<em>' + article.article_tags + '</em>' +
-								'<h3>' + article.article_title + '<span>' + article.article_content + '</span></h3>' +
-								// '<img src="images/img3.png" />' +
-							'</a></li>';
+				var articleimage = '';
+				if(article.article_image){
+					var item = '<li>' +
+								'<div class="avatar">' +
+									'<img src="images/other1.jpg">' +
+									'<span>加关注</span>' +
+								'</div>' +
+								'<div class="cont_box">' +
+									'<div class="title">' +
+										'<div class="more"><a>╳</a></div>' +
+										'<h3><a>' + article.article_title + '</a></h3>' +
+										'<div class="clear"></div>' +
+									'</div>' +
+									'<div class="cont">' +
+										'<img src="data/' + article.article_image + '" />' +
+										'<p>' + article.article_content + '</p>' +
+									'</div>' +
+									'<div class="comment_box">' +
+										'<div class="tags">' +
+											'<a>' + article.article_tags + '</a>' +
+										'</div>' +
+										'<div class="share">' +
+											'<a class="love_btn"></a>' +
+											'<a class="reship_btn"></a>' +
+											'<a class="comt_btn"></a>' +
+										'</div>' +
+										'<div class="clear space_10"></div>' +
+										'<dl>' +
+											'<dt>' +
+												'<a><img src="images/avatar.jpg" /><em>Tiny</em></a>' +
+												'<span>其实所有的付出和牺牲最终的受益人都是自己</span>' +
+											'</dt>' +
+											'<dd>' +
+												'<textarea></textarea>' +
+												'<a class="cancel_btn">取消</a>' +
+												'<a class="done_btn">评论</a>' +
+												'<div class="clear"></div>' +
+											'</dd>' +
+										'</dl>' +
+									'</div>' +
+								'</div>' +
+								'<div class="clear"></div>' +
+							'</li>';
+				}else{
+					var item = '<li>' +
+								'<div class="avatar">' +
+									'<img src="images/other1.jpg">' +
+									'<span>加关注</span>' +
+								'</div>' +
+								'<div class="cont_box">' +
+									'<div class="title">' +
+										'<div class="more"><a>╳</a></div>' +
+										'<h3><a>' + article.article_title + '</a></h3>' +
+										'<div class="clear"></div>' +
+									'</div>' +
+									'<div class="cont">' +
+										'<a href="' + article.article_url + '">'+ article.article_url + '</a>' +
+										'<p>' + article.article_content + '</p>' +
+									'</div>' +
+									'<div class="comment_box">' +
+										'<div class="tags">' +
+											'<a>' + article.article_tags + '</a>' +
+										'</div>' +
+										'<div class="share">' +
+											'<a class="love_btn"></a>' +
+											'<a class="reship_btn"></a>' +
+											'<a class="comt_btn"></a>' +
+										'</div>' +
+										'<div class="clear space_10"></div>' +
+										'<dl>' +
+											'<dt>' +
+												'<a><img src="images/avatar.jpg" /><em>Tiny</em></a>' +
+												'<span>其实所有的付出和牺牲最终的受益人都是自己</span>' +
+											'</dt>' +
+											'<dd>' +
+												'<textarea></textarea>' +
+												'<a class="cancel_btn">取消</a>' +
+												'<a class="done_btn">评论</a>' +
+												'<div class="clear"></div>' +
+											'</dd>' +
+										'</dl>' +
+									'</div>' +
+								'</div>' +
+								'<div class="clear"></div>' +
+							'</li>';
+				}
+				
 				htmlTxt += item;
 			}
 			$('#my_article').html(htmlTxt);
@@ -80,7 +170,7 @@ $(function() {
 			article_type:'text',
 			article_title: title,
 			article_content: cont,
-			article_url: '文章木有连接的',
+			article_url: '',
 			article_tags: tags
 		}, function(result) {
 			if (result.success) {
@@ -93,7 +183,7 @@ $(function() {
 
 
 	// 上传图像
-	$('#upimg').uploadFile({//这个地方我是要点击上传图片按钮触发事件？还是其他的一样的提交按钮？
+	$('#upimg').uploadFile({
 	    url: '/publish',
 	    fileName: 'file',
 	    showPreivew: false,
@@ -105,12 +195,19 @@ $(function() {
 	            article_type: 'image',
 	            article_title: $('#img_title').val(),
 	            article_content: $('#img_cont').val(),
+				article_url: '',
 	            article_tags: $('#img_tags').val()
 	        };        
 	    },
 		onSuccess:function(files, data, xhr, pd) {
-			alert(JSON.stringify(data));
+			var result = JSON.parse(data);
+			if (result.success) {
+				window.location = '/';
+			} else {
+				alert(result.data);
+			}
 		}
+
 	});
 
 	//上传音频

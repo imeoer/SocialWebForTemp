@@ -139,4 +139,6 @@ $(document).ready(function(){
 		$(this).parent().parent().parent().find('.comt_btn').attr("class","comt_btn");
 	});
 
+	
+
 });

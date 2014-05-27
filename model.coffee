@@ -86,9 +86,11 @@ class Model
 
 		if userName
 
-			database.article.findOne {user_name: userName}, (err, result) ->
+			database.user.findOne {user_name: userName}, (err, result) ->
 				
 				if result
+
+					delete result.pass_word
 
 					res.end(JSON.stringify({
 						success: true,
@@ -217,6 +219,8 @@ class Model
 					database.user.update {user_name: targetUserName}, {$set: {msgs: msgAry}}, (err, result) ->
 
 						if result
+
+							console.log(result);
 
 							res.end(JSON.stringify({
 								success: true,

@@ -15,6 +15,7 @@ app.set('view engine', 'html')
 app.set('views', __dirname + '/views')
 
 app.get '/', model.indexPage #主页
+app.get '/logout', model.logout #注销
 app.get '/login', model.loginPage #登录页
 app.get '/upload', model.uploadPage #上传页
 

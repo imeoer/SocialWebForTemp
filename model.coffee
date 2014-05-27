@@ -16,6 +16,11 @@ class Model
 
 		res.render('login', {})
 
+	logout: (req, res) ->
+
+		delete req.session.user_name
+		res.redirect '/login'
+
 	uploadPage: (req, res) ->
 
 		res.render('upload', {})

@@ -11,6 +11,9 @@ var bindEvent = function() {
 		var content = $item.find('.text').val();
 		sendPrivateMsg(userName, content);
 	});
+	$('.ico_exit').on('click', function() {
+		location.href = '/logout';
+	});
 };
 
 var getUserInfo = function() {

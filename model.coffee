@@ -1,5 +1,6 @@
 database = require('./database')
 _ = require('underscore')
+fs = require('fs')
 
 class Model
 
@@ -68,7 +69,9 @@ class Model
 					user_name: userName,
 					pass_word: passWord,
 					msgs: [],
-					focus: []
+					focus: [],
+					user_nick: '',
+					user_motto: ''
 				}, (err, result) ->
 
 					if result
@@ -122,12 +125,12 @@ class Model
 
 		if userName
 
-			passWord = req.body.pass_word
+			# passWord = req.body.pass_word
 			userNick = req.body.user_nick
 			userMotto = req.body.user_motto
 
 			database.user.update {user_name: userName}, {$set: {
-				pass_word: passWord,
+				# pass_word: passWord,
 				user_nick: userNick,
 				user_motto: userMotto
 			}}, (err, result) ->
@@ -184,9 +187,9 @@ class Model
 				return
 
 			if fileType is 'image/jpeg'
-				fs.renameSync(avaterOldPath, 'data/' + userName + '.jpg')
+				fs.renameSync(avaterOldPath, 'public/data/' + userName + '.jpg')
 			else if fileType is 'image/png'
-				fs.renameSync(avaterOldPath, 'data/' + userName + '.png')
+				fs.renameSync(avaterOldPath, 'public/data/' + userName + '.jpg')
 
 			res.end(JSON.stringify({
 				success: true,

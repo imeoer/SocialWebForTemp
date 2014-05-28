@@ -14,6 +14,31 @@ var bindEvent = function() {
 	$('.ico_exit').on('click', function() {
 		location.href = '/logout';
 	});
+	$('#update_user_info').on('click', function() {
+		updateUserInfo();
+	});
+	$('#upload_avatar').uploadFile({
+	    url: '/updateUserAvatar',
+	    fileName: 'file',
+	    showPreivew: false,
+	    showFileCounter: false,
+	    showStatusAfterSuccess: false,
+	    showDone: false,
+	    statusBarWidth: 200,
+	    dragdropWidth: 200,
+	    dynamicFormData: function() {
+	        return {};        
+	    },
+		onSuccess:function(files, data, xhr, pd) {
+			var result = JSON.parse(data);
+			if (result.success) {
+				refreshUserInfo();
+			} else {
+				alert(result.data);
+			}
+		}
+
+	});
 };
 
 var getUserInfo = function() {
@@ -21,9 +46,9 @@ var getUserInfo = function() {
 	}, function(result) {
 		if (result.success) {
 			userInfo = result.data;
-			$('#user_name').text(userInfo.user_name);
 			refreshFriendList();
 			refreshPriMsgList();
+			refreshUserInfo();
 		} else {
 			alert(result.data);
 		}
@@ -100,4 +125,30 @@ var refreshPriMsgList = function() {
 		result += item;
 	}
 	$('.msg_box').html(result);
+};
+
+var refreshUserInfo = function() {
+	var userNick = userInfo.user_nick || '';
+	var userMotto = userInfo.user_motto || '';
+	var userName = userInfo.user_name;
+	$('#user_nick_input').val(userNick);
+	$('#user_motto_input').val(userMotto);
+	$('#user_avatar').attr('src', 'data/' + userName + '.jpg?' + (new Date()).getTime());
+	$('#user_nav_avatar').attr('src', 'data/' + userInfo.user_name + '.jpg?' + (new Date()).getTime());
+	$('#user_name').text(userName);
+};
+
+var updateUserInfo = function() {
+	var userNick = $('#user_nick_input').val();
+	var userMotto = $('#user_motto_input').val();
+	$.post('/updateUserInfo', {
+		user_nick: userNick,
+		user_motto: userMotto
+	}, function(result) {
+		if (result.success) {
+			alert(result.data);
+		} else {
+			alert(result.data);
+		}
+	}, 'JSON');
 };

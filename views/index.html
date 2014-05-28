@@ -23,17 +23,16 @@
 			<i class="close">╳</i>
 			<div class="avatar_box">
 				<i class="shadow"></i>
-				<img src="images/avatar.jpg" />
+				<img id="user_avatar" src="images/avatar.jpg" />
 			</div>
 			<div class="edit_name">
-				<a class="btn">上传头像</a>
+				<a class="btn" id="upload_avatar">上传头像</a>
 				<label>
-					<input class="text" type="text" />
-					<a class="btn">修改称呼</a>
+					<input class="text" type="text" id="user_nick_input"/>
 				</label>
 				<label>
-					<textarea></textarea>
-					<a class="btn">修改介绍</a>
+					<textarea id="user_motto_input"></textarea>
+					<a class="btn" id="update_user_info">修改简介</a>
 				</label>
 			</div>
 			<div class="clear"></div>
@@ -264,7 +263,7 @@
 	</div>
 	<div class="nav">
 		<div class="avatar">
-			<a><img src="images/avatar.jpg" /></a>
+			<a><img id="user_nav_avatar" src="images/avatar.jpg" /></a>
 		</div>
 		<h2><a id="user_name">Tiny</a></h2>
 		<dl>

@@ -25,6 +25,14 @@ var bindEvent = function() {
 		$articleItem = $(this).parents('.article-item');
 		addArticleComment($articleItem);
 	});
+	$(document).on('click', '.article .remove_btn', function(event) {
+		$articleItem = $(this).parents('.article-item');
+		removeArticle($articleItem);
+	});
+	$(document).on('click', '.article .reship_btn', function(event) {
+		$articleItem = $(this).parents('.article-item');
+		forwardArticle($articleItem);
+	});
 	$('.ico_exit').on('click', function() {
 		location.href = '/logout';
 	});
@@ -150,6 +158,7 @@ var refreshUserInfo = function() {
 	$('#user_avatar').attr('src', 'data/' + userName + '.jpg?' + (new Date()).getTime());
 	$('#user_nav_avatar').attr('src', 'data/' + userInfo.user_name + '.jpg?' + (new Date()).getTime());
 	$('#user_name').text(userName);
+	listMyArticle();
 };
 
 var updateUserInfo = function() {
@@ -182,6 +191,34 @@ var addArticleComment = function($articleItem) {
 				'<span>' + commentConent + '</span>' +
 			'</dt>');
 			commentConentInput.val('');
+		} else {
+			alert(result.data);
+		}
+	}, 'JSON');
+};
+
+var removeArticle = function($articleItem) {
+	var articleId = $articleItem.data('id');
+	$.post('/removeArticle', {
+		article_id: articleId
+	}, function(result) {
+		if (result.success) {
+			$articleItem.fadeOut(500, function() {
+				$(this).remove();
+			});
+		} else {
+			alert(result.data);
+		}
+	}, 'JSON');
+};
+
+var forwardArticle = function($articleItem) {
+	var articleId = $articleItem.data('id');
+	$.post('/forwardArticle', {
+		article_id: articleId
+	}, function(result) {
+		if (result.success) {
+			alert(result.data);
 		} else {
 			alert(result.data);
 		}

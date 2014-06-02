@@ -397,7 +397,7 @@ class Model
 
 							# sort
 							newResults = newResults.sort (articleA, articleB) ->
-								return articleA.publish_date > articleB.publish_date
+								return articleA.publish_date < articleB.publish_date
 
 							res.end(JSON.stringify({
 								success: true,
@@ -696,9 +696,9 @@ class Model
 
 			articleID = req.body.article_id
 
-			database.article.remove {_id: articleID, user_name: userName}, (err, results) ->
+			database.article.remove {_id: articleID}, {}, (err, result) ->
 				
-				if results and results.length
+				if result
 
 					res.end(JSON.stringify({
 						success: true,

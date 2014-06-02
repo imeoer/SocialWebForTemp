@@ -30,116 +30,127 @@ $(function() {
 	}, 'JSON');
 
 	//展示当前用户（包括所关注的人）的文章
-	$.post('/listMyArticle', {
-	}, function(result) {
-		if (result.success) {
-			var htmlTxt = '';
-			for (var i in result.data) {
-				var article = result.data[i];
-				var articleimage = '';
-				var articleCommentAry = article.article_comments;
-				var allArtcileCommentHTML = '';
-				for (var i in articleCommentAry) {
-					var articleComment = articleCommentAry[i];
-					var commentConent = articleComment.comment_content;
-					var commentUserName = articleComment.user_name;
-					var artcileCommentHTML = '<dt>' +
-						'<a><img src="data/' + commentUserName + '.jpg" /><em>' + commentUserName + '</em></a>' +
-						'<span>' + commentConent + '</span>' +
-					'</dt>';
-					allArtcileCommentHTML += artcileCommentHTML;
-				}
-				if(article.article_image){
-					var item = '<li class="article-item" data-id="' + article._id + '">' +
-								'<div class="avatar">' +
-									'<img src="data/' + article.user_name + '.jpg">' +
-									// '<span>加关注</span>' +
-								'</div>' +
-								'<div class="cont_box">' +
-									'<div class="title">' +
-										'<div class="more"><a>╳</a></div>' +
-										'<h3><a>' + article.article_title + '</a></h3>' +
-										'<div class="clear"></div>' +
+	listMyArticle = function() {
+		$.post('/listMyArticle', {
+		}, function(result) {
+			if (result.success) {
+				var htmlTxt = '';
+				for (var i in result.data) {
+					var article = result.data[i];
+					var articleimage = '';
+					var articleCommentAry = article.article_comments;
+					var allArtcileCommentHTML = '';
+					for (var i in articleCommentAry) {
+						var articleComment = articleCommentAry[i];
+						var commentConent = articleComment.comment_content;
+						var commentUserName = articleComment.user_name;
+						var artcileCommentHTML = '<dt>' +
+							'<a><img src="data/' + commentUserName + '.jpg" /><em>' + commentUserName + '</em></a>' +
+							'<span>' + commentConent + '</span>' +
+						'</dt>';
+						allArtcileCommentHTML += artcileCommentHTML;
+					}
+					var remove_display, reship_display;
+					alert(userInfo.user_name)
+					if (article.user_name === userInfo.user_name) {
+						remove_display = '';
+						reship_display = 'hide';
+					} else {
+						remove_display = 'hide';
+						reship_display = '';
+					}
+					if(article.article_image){
+						var item = '<li class="article-item" data-id="' + article._id + '">' +
+									'<div class="avatar">' +
+										'<img src="data/' + article.user_name + '.jpg">' +
+										// '<span>加关注</span>' +
 									'</div>' +
-									'<div class="cont">' +
-										'<img src="data/' + article.article_image + '" />' +
-										'<p>' + article.article_content + '</p>' +
-									'</div>' +
-									'<div class="comment_box">' +
-										'<div class="tags">' +
-											'<a>' + article.article_tags + '</a>' +
+									'<div class="cont_box">' +
+										'<div class="title">' +
+											'<div class="more"><a class="remove_btn ' + remove_display + '">╳</a></div>' +
+											'<h3><a>' + article.article_title + '</a></h3>' +
+											'<div class="clear"></div>' +
 										'</div>' +
-										'<div class="share">' +
-											'<a class="love_btn"></a>' +
-											'<a class="reship_btn"></a>' +
-											'<a class="comt_btn"></a>' +
+										'<div class="cont">' +
+											'<img src="data/' + article.article_image + '" />' +
+											'<p>' + article.article_content + '</p>' +
 										'</div>' +
-										'<div class="clear space_10"></div>' +
-										'<dl>' +
-											'<div class="article_comment_list">' +
-												allArtcileCommentHTML +
+										'<div class="comment_box">' +
+											'<div class="tags">' +
+												'<a>' + article.article_tags + '</a>' +
 											'</div>' +
-											'<dd>' +
-												'<textarea class="comment_content_input"></textarea>' +
-												'<a class="cancel_btn">取消</a>' +
-												'<a class="done_btn">评论</a>' +
-												'<div class="clear"></div>' +
-											'</dd>' +
-										'</dl>' +
-									'</div>' +
-								'</div>' +
-								'<div class="clear"></div>' +
-							'</li>';
-				}else{
-					var item = '<li class="article-item" data-id="' + article._id + '">' +
-								'<div class="avatar">' +
-									'<img src="data/' + article.user_name + '.jpg">' +
-									// '<span>加关注</span>' +
-								'</div>' +
-								'<div class="cont_box">' +
-									'<div class="title">' +
-										'<div class="more"><a>╳</a></div>' +
-										'<h3><a>' + article.article_title + '</a></h3>' +
-										'<div class="clear"></div>' +
-									'</div>' +
-									'<div class="cont">' +
-										'<a href="' + article.article_url + '">'+ article.article_url + '</a>' +
-										'<p>' + article.article_content + '</p>' +
-									'</div>' +
-									'<div class="comment_box">' +
-										'<div class="tags">' +
-											'<a>' + article.article_tags + '</a>' +
-										'</div>' +
-										'<div class="share">' +
-											'<a class="love_btn"></a>' +
-											'<a class="reship_btn"></a>' +
-											'<a class="comt_btn"></a>' +
-										'</div>' +
-										'<div class="clear space_10"></div>' +
-										'<dl>' +
-											'<div class="article_comment_list">' +
-												allArtcileCommentHTML +
+											'<div class="share">' +
+												// '<a class="love_btn"></a>' +
+												'<a class="reship_btn' + reship_display + '"></a>' +
+												'<a class="comt_btn"></a>' +
 											'</div>' +
-											'<dd>' +
-												'<textarea class="comment_content_input"></textarea>' +
-												'<a class="cancel_btn">取消</a>' +
-												'<a class="done_btn">评论</a>' +
-												'<div class="clear"></div>' +
-											'</dd>' +
-										'</dl>' +
+											'<div class="clear space_10"></div>' +
+											'<dl>' +
+												'<div class="article_comment_list">' +
+													allArtcileCommentHTML +
+												'</div>' +
+												'<dd>' +
+													'<textarea class="comment_content_input"></textarea>' +
+													'<a class="cancel_btn">取消</a>' +
+													'<a class="done_btn">评论</a>' +
+													'<div class="clear"></div>' +
+												'</dd>' +
+											'</dl>' +
+										'</div>' +
 									'</div>' +
-								'</div>' +
-								'<div class="clear"></div>' +
-							'</li>';
+									'<div class="clear"></div>' +
+								'</li>';
+					}else{
+						var item = '<li class="article-item" data-id="' + article._id + '">' +
+									'<div class="avatar">' +
+										'<img src="data/' + article.user_name + '.jpg">' +
+										// '<span>加关注</span>' +
+									'</div>' +
+									'<div class="cont_box">' +
+										'<div class="title">' +
+											'<div class="more"><a class="remove_btn ' + remove_display + '">╳</a></div>' +
+											'<h3><a>' + article.article_title + '</a></h3>' +
+											'<div class="clear"></div>' +
+										'</div>' +
+										'<div class="cont">' +
+											'<a href="' + article.article_url + '">'+ article.article_url + '</a>' +
+											'<p>' + article.article_content + '</p>' +
+										'</div>' +
+										'<div class="comment_box">' +
+											'<div class="tags">' +
+												'<a>' + article.article_tags + '</a>' +
+											'</div>' +
+											'<div class="share">' +
+												// '<a class="love_btn"></a>' +
+												'<a class="reship_btn' + reship_display + '"></a>' +
+												'<a class="comt_btn"></a>' +
+											'</div>' +
+											'<div class="clear space_10"></div>' +
+											'<dl>' +
+												'<div class="article_comment_list">' +
+													allArtcileCommentHTML +
+												'</div>' +
+												'<dd>' +
+													'<textarea class="comment_content_input"></textarea>' +
+													'<a class="cancel_btn">取消</a>' +
+													'<a class="done_btn">评论</a>' +
+													'<div class="clear"></div>' +
+												'</dd>' +
+											'</dl>' +
+										'</div>' +
+									'</div>' +
+									'<div class="clear"></div>' +
+								'</li>';
+					}
+					
+					htmlTxt += item;
 				}
-				
-				htmlTxt += item;
+				$('#my_article').html(htmlTxt);
+			} else {
+				alert(result.data);
 			}
-			$('#my_article').html(htmlTxt);
-		} else {
-			alert(result.data);
-		}
-	}, 'JSON');
+		}, 'JSON');
+	};
 
 	// 绑定登录单击事件
 	$('.submit_l').on('click', function() {

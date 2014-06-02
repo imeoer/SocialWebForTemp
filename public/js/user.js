@@ -169,7 +169,7 @@ var updateUserInfo = function() {
 		user_motto: userMotto
 	}, function(result) {
 		if (result.success) {
-			alert(result.data);
+			// alert(result.data);
 		} else {
 			// alert(result.data);
 		}

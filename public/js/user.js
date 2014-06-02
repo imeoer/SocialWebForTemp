@@ -5,11 +5,23 @@ $(function() {
 });
 
 var bindEvent = function() {
+
 	$(document).on('click', '.friend_list .send_msg', function(event) {
 		var $item = $(event.currentTarget).parents('.friend_item');
 		var userName = $item.data('user-name');
 		var content = $item.find('.text').val();
 		sendPrivateMsg(userName, content);
+	});
+	$(document).on('click', '.article .comt_btn', function() {
+		if ($(this).hasClass('active')) {
+			$(this).parent().parent().find("dl").hide("slow");
+			$(this).attr("class","comt_btn");
+		} else {
+			$(this).parent().parent().find("dl").show("slow");
+			$(this).attr("class","comt_btn active");
+		}
+		
+		
 	});
 	$('.ico_exit').on('click', function() {
 		location.href = '/logout';

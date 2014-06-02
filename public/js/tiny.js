@@ -20,7 +20,7 @@ $(document).ready(function(){
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 			
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish .user_msg,.publish .msg_box,.publish .friend_list').attr("style","display:none;");
 			$('.publish ul').slideUp("slow");
@@ -28,7 +28,7 @@ $(document).ready(function(){
 			$('.publish ul li').find('form').fadeOut(250);
 			$('.publish ul li').eq(($('.nav ul li').index($(this))*1-1)).find('form').delay(500).fadeIn(250);
 		}else{
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish .user_msg,.publish .msg_box').attr("style","display:none;");
 			$('.publish ul').slideUp("slow");
@@ -51,23 +51,19 @@ $(document).ready(function(){
 		$('.article').delay(500).animate({left:(window.innerWidth-940) + 'px'},500);
 	});
 
-	$('.msg_box .comment p em').click(function(){
-		$(this).parent().parent().find('.reply').slideToggle(200);
-	});
-
 	$('.nav .ico_msg').click(function(){
 		if(($('.nav').css("left").substring(1,2)*1) == 5){
 			$('.nav').animate({left:(window.innerWidth-255) + 'px'},500);
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .user_msg,.publish .friend_list').attr("style","display:none;");
 			$('.publish .msg_box').show("slow");
 		}else{
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .user_msg,.publish .friend_list').attr("style","display:none;");
@@ -81,13 +77,13 @@ $(document).ready(function(){
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .friend_list').attr("style","display:none;");
 			$('.publish .user_msg').show("slow");
 		}else{
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .friend_list').attr("style","display:none;");
@@ -101,13 +97,13 @@ $(document).ready(function(){
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .user_msg').attr("style","display:none;");
 			$('.publish .friend_list').show("slow");
 		}else{
-			$('.article').animate({left:'-155px'},500);
+			$('.article').animate({left:'0px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .user_msg').attr("style","display:none;");
@@ -125,20 +121,12 @@ $(document).ready(function(){
 	},function(){
 		$(this).attr("class","love_btn");
 	});
-
-	$('.article .comt_btn').toggle(function(){
-		$(this).parent().parent().find("dl").show("slow");
-		$(this).attr("class","comt_btn active");
-	},function(){
-		$(this).parent().parent().find("dl").hide("slow");
-		$(this).attr("class","comt_btn");
-	});
-
-	$('.article .comment_box dd a').click(function(){
+	$(document).on('click', '.article .comment_box dd a', function(event) {
 		$(this).parent().parent().hide("slow");
 		$(this).parent().parent().parent().find('.comt_btn').attr("class","comt_btn");
 	});
-
-	
+	$(document).on('click', '.msg_box .comment p em', function(event) {
+		$(this).parent().parent().find('.reply').slideToggle(200);
+	});
 
 });

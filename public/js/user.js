@@ -56,7 +56,7 @@ var bindEvent = function() {
 			if (result.success) {
 				refreshUserInfo();
 			} else {
-				alert(result.data);
+				// alert(result.data);
 			}
 		}
 
@@ -72,7 +72,7 @@ var getUserInfo = function() {
 			refreshPriMsgList();
 			refreshUserInfo();
 		} else {
-			alert(result.data);
+			// alert(result.data);
 		}
 	}, 'JSON');
 };
@@ -171,7 +171,7 @@ var updateUserInfo = function() {
 		if (result.success) {
 			alert(result.data);
 		} else {
-			alert(result.data);
+			// alert(result.data);
 		}
 	}, 'JSON');
 };
@@ -192,7 +192,7 @@ var addArticleComment = function($articleItem) {
 			'</dt>');
 			commentConentInput.val('');
 		} else {
-			alert(result.data);
+			// alert(result.data);
 		}
 	}, 'JSON');
 };
@@ -207,7 +207,7 @@ var removeArticle = function($articleItem) {
 				$(this).remove();
 			});
 		} else {
-			alert(result.data);
+			// alert(result.data);
 		}
 	}, 'JSON');
 };
@@ -220,7 +220,7 @@ var forwardArticle = function($articleItem) {
 		if (result.success) {
 			alert(result.data);
 		} else {
-			alert(result.data);
+			// alert(result.data);
 		}
 	}, 'JSON');
 };

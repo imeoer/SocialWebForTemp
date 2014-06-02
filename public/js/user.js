@@ -63,7 +63,7 @@ var refreshFriendList = function() {
 		var item =
 			'<dd class="friend_item" data-user-name="' + userName + '">' +
 				'<div class="avatar">' +
-					'<a><img src="images/avatar.jpg" /></a>' +
+					'<a><img src="data/' + userName + '.jpg" /></a>' +
 				'</div>' +
 				'<div class="comment">' +
 					'<h3>' +

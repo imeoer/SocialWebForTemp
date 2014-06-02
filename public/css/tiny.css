@@ -24,7 +24,7 @@ a:hover{text-decoration:none;cursor:pointer;}
 .login_foot{font:14px/30px "微软雅黑";text-align:center;color:#fff;}
 
 /* nav */
-.nav{width:260px;padding-top:15px;position:fixed;left:-5px;top:0px;background:url(../images/nav_bg.png) repeat-y 0 0;}
+.nav{width:260px;padding-top:25px;position:fixed;left:-5px;top:0px;background:url(../images/nav_bg.png) repeat-y 0 0;}
 .nav .avatar{width:120px;height:120px;border-radius:60px;background-color:rgba(0,0,0,0.3);margin:0px auto;}
 .nav .avatar img{width:110px;height:110px;border-radius:55px;margin:5px;}
 .nav h2{font:20px/30px "微软雅黑";text-align:center;margin:5px 0 10px;}

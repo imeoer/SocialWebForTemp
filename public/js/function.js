@@ -1,5 +1,5 @@
+
 $(function() {
-	
 
 	//展示所有用户文章
 	$.post('/listAllArticle', {
@@ -40,7 +40,7 @@ $(function() {
 				if(article.article_image){
 					var item = '<li>' +
 								'<div class="avatar">' +
-									'<img src="images/other1.jpg">' +
+									'<img src="data/' + article.user_name + '.jpg">' +
 									'<span>加关注</span>' +
 								'</div>' +
 								'<div class="cont_box">' +
@@ -82,7 +82,7 @@ $(function() {
 				}else{
 					var item = '<li>' +
 								'<div class="avatar">' +
-									'<img src="images/other1.jpg">' +
+									'<img src="data/' + article.user_name + '.jpg">' +
 									'<span>加关注</span>' +
 								'</div>' +
 								'<div class="cont_box">' +

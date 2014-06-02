@@ -37,6 +37,18 @@ $(function() {
 			for (var i in result.data) {
 				var article = result.data[i];
 				var articleimage = '';
+				var articleCommentAry = article.article_comments;
+				var allArtcileCommentHTML = '';
+				for (var i in articleCommentAry) {
+					var articleComment = articleCommentAry[i];
+					var commentConent = articleComment.comment_content;
+					var commentUserName = articleComment.user_name;
+					var artcileCommentHTML = '<dt>' +
+						'<a><img src="data/' + commentUserName + '.jpg" /><em>' + commentUserName + '</em></a>' +
+						'<span>' + commentConent + '</span>' +
+					'</dt>';
+					allArtcileCommentHTML += artcileCommentHTML;
+				}
 				if(article.article_image){
 					var item = '<li>' +
 								'<div class="avatar">' +
@@ -64,10 +76,7 @@ $(function() {
 										'</div>' +
 										'<div class="clear space_10"></div>' +
 										'<dl>' +
-											'<dt>' +
-												'<a><img src="images/avatar.jpg" /><em>Tiny</em></a>' +
-												'<span>其实所有的付出和牺牲最终的受益人都是自己</span>' +
-											'</dt>' +
+											allArtcileCommentHTML +
 											'<dd>' +
 												'<textarea></textarea>' +
 												'<a class="cancel_btn">取消</a>' +
@@ -106,10 +115,7 @@ $(function() {
 										'</div>' +
 										'<div class="clear space_10"></div>' +
 										'<dl>' +
-											'<dt>' +
-												'<a><img src="images/avatar.jpg" /><em>Tiny</em></a>' +
-												'<span>其实所有的付出和牺牲最终的受益人都是自己</span>' +
-											'</dt>' +
+											allArtcileCommentHTML +
 											'<dd>' +
 												'<textarea></textarea>' +
 												'<a class="cancel_btn">取消</a>' +

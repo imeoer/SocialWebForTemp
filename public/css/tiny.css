@@ -132,7 +132,7 @@ a:hover{text-decoration:none;cursor:pointer;}
 .publish .user_msg .avatar_box{float:left;width:150px;height:150px;margin-right:20px;position:relative;}
 .publish .user_msg .avatar_box img{display:block;width:150px;height:150px;}
 .publish .user_msg .avatar_box .shadow{display:block;height:150px;width:150px;position:absolute;left:0px;top:0px;background:url(../images/avatar_shadow.png) no-repeat 0px 0px;}
-.publish .user_msg .edit_name{float:left;}
+.publish .user_msg .edit_name{float:left;font-family:"微软雅黑";color:#999;}
 .publish .user_msg .edit_name .btn{display:inline-block;height:28px;font:14px/26px "微软雅黑";background-color:#1aafe4;color:#fff;padding:0px 10px;cursor:pointer;border-radius:3px;vertical-align:2px;}
 .publish .user_msg .edit_name .btn:hover{background-color:#008bbd;}
 .publish .user_msg .edit_name label{display:block;margin-top:10px;}

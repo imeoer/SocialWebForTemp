@@ -20,7 +20,7 @@ $(document).ready(function(){
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 			
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish .user_msg,.publish .msg_box,.publish .friend_list').attr("style","display:none;");
 			$('.publish ul').slideUp("slow");
@@ -28,7 +28,7 @@ $(document).ready(function(){
 			$('.publish ul li').find('form').fadeOut(250);
 			$('.publish ul li').eq(($('.nav ul li').index($(this))*1-1)).find('form').delay(500).fadeIn(250);
 		}else{
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish .user_msg,.publish .msg_box').attr("style","display:none;");
 			$('.publish ul').slideUp("slow");
@@ -57,13 +57,13 @@ $(document).ready(function(){
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .user_msg,.publish .friend_list').attr("style","display:none;");
 			$('.publish .msg_box').show("slow");
 		}else{
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .user_msg,.publish .friend_list').attr("style","display:none;");
@@ -77,13 +77,13 @@ $(document).ready(function(){
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .friend_list').attr("style","display:none;");
 			$('.publish .user_msg').show("slow");
 		}else{
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .friend_list').attr("style","display:none;");
@@ -97,13 +97,13 @@ $(document).ready(function(){
 			$('.index_cont').animate({left:window.innerWidth + 'px'},500);
 			$('.article').animate({left:(window.innerWidth-940) + 'px'},500);
 
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .user_msg').attr("style","display:none;");
 			$('.publish .friend_list').show("slow");
 		}else{
-			$('.article').animate({left:'0px'},500);
+			$('.article').animate({left:'-155px'},500);
 			$('.publish').delay(500).animate({width:'580px'},500);
 			$('.publish ul').attr("style","display:none;");
 			$('.publish .msg_box,.publish .user_msg').attr("style","display:none;");

@@ -20,8 +20,6 @@ var bindEvent = function() {
 			$(this).parent().parent().find("dl").show("slow");
 			$(this).attr("class","comt_btn active");
 		}
-		
-		
 	});
 	$('.ico_exit').on('click', function() {
 		location.href = '/logout';
@@ -156,6 +154,22 @@ var updateUserInfo = function() {
 	$.post('/updateUserInfo', {
 		user_nick: userNick,
 		user_motto: userMotto
+	}, function(result) {
+		if (result.success) {
+			alert(result.data);
+		} else {
+			alert(result.data);
+		}
+	}, 'JSON');
+};
+
+var addArticleComment = function($articleItem) {
+	var userName = userInfo.user_name;
+	var commentConent = $articleItem.find('.comment_box .comment_content_input').val();
+	var articleId = $articleItem.data('id');
+	$.post('/addArticleComment', {
+		article_id: articleId,
+		comment_content: commentConent
 	}, function(result) {
 		if (result.success) {
 			alert(result.data);

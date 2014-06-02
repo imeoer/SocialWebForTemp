@@ -50,7 +50,7 @@ $(function() {
 					allArtcileCommentHTML += artcileCommentHTML;
 				}
 				if(article.article_image){
-					var item = '<li>' +
+					var item = '<li class="article-item" data-id="' + article._id + '">' +
 								'<div class="avatar">' +
 									'<img src="data/' + article.user_name + '.jpg">' +
 									'<span>加关注</span>' +
@@ -78,7 +78,7 @@ $(function() {
 										'<dl>' +
 											allArtcileCommentHTML +
 											'<dd>' +
-												'<textarea></textarea>' +
+												'<textarea class="comment_content_input"></textarea>' +
 												'<a class="cancel_btn">取消</a>' +
 												'<a class="done_btn">评论</a>' +
 												'<div class="clear"></div>' +

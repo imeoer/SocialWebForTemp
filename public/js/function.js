@@ -89,7 +89,7 @@ $(function() {
 								'<div class="clear"></div>' +
 							'</li>';
 				}else{
-					var item = '<li>' +
+					var item = '<li class="article-item" data-id="' + article._id + '">' +
 								'<div class="avatar">' +
 									'<img src="data/' + article.user_name + '.jpg">' +
 									'<span>加关注</span>' +

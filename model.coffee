@@ -489,7 +489,7 @@ class Model
 
 							res.end(JSON.stringify({
 								success: true,
-								data: result
+								data: '评论成功'
 							}))
 
 						else

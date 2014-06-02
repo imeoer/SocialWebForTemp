@@ -21,6 +21,10 @@ var bindEvent = function() {
 			$(this).attr("class","comt_btn active");
 		}
 	});
+	$(document).on('click', '.article .comment_box .done_btn', function(event) {
+		$articleItem = $(this).parents('.article-item');
+		addArticleComment($articleItem);
+	});
 	$('.ico_exit').on('click', function() {
 		location.href = '/logout';
 	});

@@ -121,7 +121,7 @@ $(document).ready(function(){
 	},function(){
 		$(this).attr("class","love_btn");
 	});
-	$(document).on('click', '.article .comment_box dd a', function(event) {
+	$(document).on('click', '.article .comment_box dd .cancel_btn', function(event) {
 		$(this).parent().parent().hide("slow");
 		$(this).parent().parent().parent().find('.comt_btn').attr("class","comt_btn");
 	});

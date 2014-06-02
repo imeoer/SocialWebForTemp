@@ -9,13 +9,13 @@ $(function() {
 			for (var i in result.data) {
 				var article = result.data[i];
 				if(article.article_image){
-					var item = '<li><a>' +
+					var item = '<li class="article_other" data-otherid="' + article._id + '" data-otherusername="' + article.user_name + '" data-otherisimg="ture"><a>' +
 								'<em>' + article.article_tags + '</em>' +
 								'<h3><i>' + article.article_title + '</i><span>' + article.article_content + '</span></h3>' +
 								'<img src="data/' + article.article_image + '" />' +
 							'</a></li>';
 				}else{
-					var item = '<li><a>' +
+					var item = '<li class="article_other" data-otherid="' + article._id + '" data-otherusername="' + article.user_name + '" data-otherisimg=" "><a>' +
 								'<em>' + article.article_tags + '</em>' +
 								'<h3><i>' + article.article_title + '</i><span>' + article.article_content + '</span></h3>' +
 								// '<img src="images/img3.png" />' +
@@ -28,6 +28,9 @@ $(function() {
 			alert(result.data);
 		}
 	}, 'JSON');
+	
+
+
 
 	//展示当前用户（包括所关注的人）的文章
 	listMyArticle = function() {

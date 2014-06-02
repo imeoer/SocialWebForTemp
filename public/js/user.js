@@ -169,14 +169,19 @@ var updateUserInfo = function() {
 
 var addArticleComment = function($articleItem) {
 	var userName = userInfo.user_name;
-	var commentConent = $articleItem.find('.comment_box .comment_content_input').val();
+	var commentConentInput = $articleItem.find('.comment_box .comment_content_input');
+	var commentConent = commentConentInput.val();
 	var articleId = $articleItem.data('id');
 	$.post('/addArticleComment', {
 		article_id: articleId,
 		comment_content: commentConent
 	}, function(result) {
 		if (result.success) {
-			alert(result.data);
+			$articleItem.find('.article_comment_list').append('<dt>' +
+				'<a><img src="data/' + userName + '.jpg" /><em>' + userName + '</em></a>' +
+				'<span>' + commentConent + '</span>' +
+			'</dt>');
+			commentConentInput.val('');
 		} else {
 			alert(result.data);
 		}

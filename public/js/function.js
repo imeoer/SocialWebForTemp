@@ -76,7 +76,9 @@ $(function() {
 										'</div>' +
 										'<div class="clear space_10"></div>' +
 										'<dl>' +
-											allArtcileCommentHTML +
+											'<div class="article_comment_list">' +
+												allArtcileCommentHTML +
+											'</div>' +
 											'<dd>' +
 												'<textarea class="comment_content_input"></textarea>' +
 												'<a class="cancel_btn">取消</a>' +
@@ -115,9 +117,11 @@ $(function() {
 										'</div>' +
 										'<div class="clear space_10"></div>' +
 										'<dl>' +
-											allArtcileCommentHTML +
+											'<div class="article_comment_list">' +
+												allArtcileCommentHTML +
+											'</div>' +
 											'<dd>' +
-												'<textarea></textarea>' +
+												'<textarea class="comment_content_input"></textarea>' +
 												'<a class="cancel_btn">取消</a>' +
 												'<a class="done_btn">评论</a>' +
 												'<div class="clear"></div>' +

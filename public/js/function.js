@@ -25,7 +25,7 @@ $(function() {
 			}
 			$('#all_article').html(htmlTxt);
 			$('#all_article .article_other').each(function(idx, item) {
-				$(item).data('real', [result.data[i]]);
+				$(item).data('real', [result.data[idx]]);
 			});
 		} else {
 			alert(result.data);

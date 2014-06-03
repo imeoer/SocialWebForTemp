@@ -5,6 +5,8 @@ SocialWebForTemp
 
 在CMD执行：npm install coffee-script -g
 
+在源码的public目录下新建data文件夹
+
 CD到源码目录下执行：coffee index.coffee
 
 目录结构说明

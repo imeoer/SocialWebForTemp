@@ -129,16 +129,16 @@ var refreshPriMsgList = function() {
 		var date = msgAry[i].date;
 		var item = '<dd>' +
 			'<div class="avatar">' +
-				'<a><img src="images/avatar.jpg" /></a>' +
+				'<a><img src="data/' + userName + '.jpg" /></a>' +
 			'</div>' +
 			'<div class="comment">' +
 				'<h3>' +
-					'<em>╳</em>' +
+					// '<em>╳</em>' +
 					'<a>' + userName + '</a>' +
 					'<span> ' + date.toString() + '</span>' +
 				'</h3>' +
 				'<p>' +
-					'<em>回复</em>' +
+					// '<em>回复</em>' +
 					'<span>' + content + '</span>' +
 				'</p>' +
 				'<div class="reply">' +

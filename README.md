@@ -47,3 +47,26 @@ CD到源码目录下执行：coffee index.coffee
 	2、后台Server根据请求的URL和请求类型（GET,POST），将请求交给不同的处理函数来处理
 	3、处理函数从请求体中获取前端发送来的数据，验证是否合法后，写入数据到数据库，或从数据库更新，删除数据
 	4、后端处理完毕后，将操作的结果以JSON的格式返回给前端，前端解析该JSON格式，然后操作DOM显示出结果
+
+数据库中字段说明
+================
+
+	user.db包含字段：
+		user_name（用户名）
+		pass_word（密码）
+		msgs（私信，数组：对方用户名，私信内容，是否已读，发送的时间）
+		focus（关注的人，数组）
+		user_nick（昵称）
+		user_motto（个人格言）
+		_id（唯一键）
+
+	article.db包含字段：
+		user_name（所属用户）
+		article_title（标题）
+		article_content（内容）
+		article_tags（标签）
+		article_image（图片）
+		article_url（链接）
+		article_comments（评论，数组）
+		publish_date（发表日期）
+		_id（唯一键） 

@@ -70,6 +70,7 @@ class Model
 
 			else
 
+				# 向数据库插入数据
 				database.user.insert {
 					user_name: userName,
 					pass_word: passWord,

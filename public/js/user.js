@@ -33,6 +33,10 @@ var bindEvent = function() {
 		$articleItem = $(this).parents('.article-item');
 		forwardArticle($articleItem);
 	});
+	$(document).on('click', '.article .focus_user_btn', function(event) {
+		$articleItem = $(this).parents('.article-item');
+		focusUser($articleItem);
+	});
 	$('.ico_exit').on('click', function() {
 		location.href = '/logout';
 	});
@@ -221,6 +225,19 @@ var forwardArticle = function($articleItem) {
 			alert(result.data);
 		} else {
 			// alert(result.data);
+		}
+	}, 'JSON');
+};
+
+var focusUser = function($articleItem) {
+	var focusUserName = $articleItem.data('user-id');
+	$.post('/focusUser', {
+		focus_user_name: focusUserName
+	}, function(result) {
+		if (result.success) {
+			alert(result.data);
+		} else {
+			alert(result.data);
 		}
 	}, 'JSON');
 };

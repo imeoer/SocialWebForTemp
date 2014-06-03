@@ -613,7 +613,7 @@ class Model
 
 	unFocusUser: (req, res) ->
 
-		userName = req.body.user_name
+		userName = req.session.user_name
 
 		if userName
 

@@ -37,6 +37,11 @@ var bindEvent = function() {
 		$articleItem = $(this).parents('.article-item');
 		focusUser($articleItem);
 	});
+	$(document).on('click', '.friend_item .unfocus_btn', function(event) {
+		$item = $(this).parents('.friend_item');
+		unFocusUserName = $item.data('user-name')
+		unFocusUser(unFocusUserName);
+	});
 	$('.ico_exit').on('click', function() {
 		location.href = '/logout';
 	});
@@ -93,7 +98,7 @@ var refreshFriendList = function() {
 				'</div>' +
 				'<div class="comment">' +
 					'<h3>' +
-						'<em>取消关注</em>' +
+						'<em class="unfocus_btn">取消关注</em>' +
 						'<a>' + userName + '</a>' +
 					'</h3>' +
 					'<p>' +
@@ -233,6 +238,18 @@ var focusUser = function($articleItem) {
 	var focusUserName = $articleItem.data('user-id');
 	$.post('/focusUser', {
 		focus_user_name: focusUserName
+	}, function(result) {
+		if (result.success) {
+			alert(result.data);
+		} else {
+			alert(result.data);
+		}
+	}, 'JSON');
+};
+
+var unFocusUser = function(unFocusUserName) {
+	$.post('/unFocusUser', {
+		unfocus_user_name: unFocusUserName
 	}, function(result) {
 		if (result.success) {
 			alert(result.data);

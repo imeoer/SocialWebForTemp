@@ -63,7 +63,7 @@ $(function() {
 				var item = '<li class="article-item" data-id="' + article._id + '" data-user-id="' + article.user_name + '">' +
 							'<div class="avatar">' +
 								'<img src="data/' + article.user_name + '.jpg">' +
-								'<span class="focus_user_btn">加关注</span>' +
+								'<span class="focus_user_btn' + reship_display + '">加关注</span>' +
 							'</div>' +
 							'<div class="cont_box">' +
 								'<div class="title">' +

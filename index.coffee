@@ -1,7 +1,9 @@
+# 加载第三方库
 express = require('express')
 consolidate = require('consolidate')
 model = require('./model')
 
+# 配置服务器选项，文件上传，JSON解析，COOKIE解析等
 app = express()
 app.use(express.json())
 app.use(express.multipart({uploadDir: './public/data'}))
@@ -9,11 +11,14 @@ app.use(express.urlencoded())
 app.use(express.cookieParser())
 app.use(express.cookieSession({secret: 'social_web'}))
 
+# 配置前端文件的目录位置
+# 配置视图（页面）文件的目录位置
 app.use(express.static(__dirname + '/public'))
 app.engine('html', consolidate.handlebars)
 app.set('view engine', 'html')
 app.set('views', __dirname + '/views')
 
+# 将前端请求分发给相应函数处理:
 app.get '/', model.indexPage #主页
 app.get '/logout', model.logout #注销
 app.get '/login', model.loginPage #登录页
@@ -39,4 +44,5 @@ app.post '/focusUser', model.focusUser #关注指定用户
 app.post '/unFocusUser', model.unFocusUser #取消关注指定用户
 app.post '/getTagAllArticle', model.getTagAllArticle #获取指定标签的所有文章
 
+# 启动服务器，监听80端口
 app.listen(80)

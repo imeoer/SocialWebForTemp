@@ -1,3 +1,4 @@
+# 加载第三方库
 database = require('./database')
 _ = require('underscore')
 fs = require('fs')
@@ -28,15 +29,19 @@ class Model
 
 	login: (req, res) ->
 
+		# 获取前端账户，密码字段的值
 		userName = req.body.user_name
 		passWord = req.body.pass_word
 
+		# 从用户数据库中查找用户名密码是否匹配
 		database.user.findOne {user_name: userName, pass_word: passWord}, (err, result) ->
 
 			if result
 
+				# 将用户保存在会话中，用于登录后所有操作的验证
 				req.session.user_name = userName
 
+				# 向前端返回登录成功后的数据
 				res.end(JSON.stringify({
 					success: true,
 					data: ''
